@@ -87,7 +87,7 @@ public class Tokeniser {
 	
 	public void loadtoo(File file, String bookName) throws FileNotFoundException {
 		Scanner chapSc = new Scanner(file);
-		chapSc.useDelimiter("Chapter");
+		chapSc.useDelimiter(" ");
 		
 		
 		String currentChap = chapSc.next();
