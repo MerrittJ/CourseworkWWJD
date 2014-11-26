@@ -118,7 +118,8 @@ public class Tokeniser {
 		
 	public static void main(String args[]) throws FileNotFoundException{
 		Tokeniser toke= new Tokeniser();
-		toke.build();
+		File file =  new File("KJBible/Genesis.txt");
+		toke.loadtoo(file, "Genesis");
 	
 	
 	}
