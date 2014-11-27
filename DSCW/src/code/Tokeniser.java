@@ -1,13 +1,14 @@
 package code;
 
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 import externalCode.*;
-
+import textdocs.*;
 public class Tokeniser {
 
 	private Scanner direcScan;
@@ -87,24 +88,26 @@ public class Tokeniser {
 	
 	public void loadtoo(File file, String bookName) throws FileNotFoundException {
 		Scanner chapSc = new Scanner(file);
-		chapSc.useDelimiter(" ");
+		chapSc.useDelimiter("CHAPTER");
 		
 		
 		String currentChap = chapSc.next();
+		System.out.println(currentChap);
 		
 		int chapNum = 1;
-		int verseNum = 1;
+		int verseNum = 0;
 		String verseRef = bookName +":"+ chapNum +":"+ verseNum;
 		
 		while(chapSc.hasNext()){
-			chapSc.next(); // skip 'Book of xxx' section of text on first run
-			chapNum++;
+			currentChap = chapSc.next(); // skip 'Book of xxx' section of text on first run
 			Scanner verseSc = new Scanner(currentChap);
 			verseSc.useDelimiter("\n");
+			verseSc.next();
 			
 			while (verseSc.hasNext()) {
 				map.put(verseRef, verseSc.next());
-				verseSc.next();
+				
+				
 				verseNum++;
 				verseRef = bookName +":"+ chapNum +":"+ verseNum;
 			}
@@ -118,8 +121,8 @@ public class Tokeniser {
 		
 	public static void main(String args[]) throws FileNotFoundException{
 		Tokeniser toke= new Tokeniser();
-		File file =  new File("KJBible/Genesis.txt");
-		toke.loadtoo(file, "Genesis");
+		File file =  new File("C:/Users/Tom/Documents/GitHub/CourseworkWWJD/DSCW/src/textdocs/1Samuel.txt");
+		toke.loadtoo(file, "Samuel1");
 	
 	
 	}
