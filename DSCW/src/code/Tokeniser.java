@@ -13,6 +13,7 @@ public class Tokeniser extends ClassLoader{
 	private Scanner direcScan;
 	private static final int NUM_OF_BOOKS = 66;
 	private Map<String, String> map;
+	private int dic;
 	
 	public Tokeniser(){
 		map = new HashMap<String, String>();
