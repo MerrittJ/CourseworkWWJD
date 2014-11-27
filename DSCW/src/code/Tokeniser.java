@@ -1,20 +1,18 @@
 package code;
 
-import java.io.File;
-
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 import externalCode.*;
 import textdocs.*;
-public class Tokeniser {
+
+public class Tokeniser extends ClassLoader{
 
 	private Scanner direcScan;
 	private static final int NUM_OF_BOOKS = 66;
 	private Map<String, String> map;
-	private int pissss;
 	
 	public Tokeniser(){
 		map = new HashMap<String, String>();
@@ -94,8 +92,11 @@ public class Tokeniser {
 		String currentChap = chapSc.next();
 		System.out.println(currentChap);
 		
+		//Number of chapter being loaded. used for making Key reference
 		int chapNum = 1;
+		//Number of verse being loaded. used for making Key reference
 		int verseNum = 0;
+		//concatenation to build hashmap key
 		String verseRef = bookName +":"+ chapNum +":"+ verseNum;
 		
 		while(chapSc.hasNext()){
@@ -106,7 +107,8 @@ public class Tokeniser {
 			
 			while (verseSc.hasNext()) {
 				map.put(verseRef, verseSc.next());
-				
+				//print statement to print each line to console. should be removed later
+				System.out.println(map.get(verseRef));
 				
 				verseNum++;
 				verseRef = bookName +":"+ chapNum +":"+ verseNum;
@@ -115,14 +117,26 @@ public class Tokeniser {
 			chapNum++;
 			verseRef = bookName +":"+ chapNum +":"+ verseNum;
 		}
+		
 		chapSc.close();
 			
 	}
 		
-	public static void main(String args[]) throws FileNotFoundException{
+	public static void main(String args[]){
 		Tokeniser toke= new Tokeniser();
-		File file =  new File("C:/Users/Tom/Documents/GitHub/CourseworkWWJD/DSCW/src/textdocs/1Samuel.txt");
-		toke.loadtoo(file, "Samuel1");
+		try {
+			Scanner bigScan = new Scanner(new File("src/textDocs/fileDir.txt"));
+		} catch (FileNotFoundException e1) {
+			System.out.println("FIle DIrectory not found");
+		}
+		bigScan.useDelimiter("\n");
+		
+		File file =  new File("src/textDocs/Genesis.txt");
+		try {
+			toke.loadtoo(file, "Samuel1");
+		} catch (FileNotFoundException e) {
+			System.out.println("FILE NOT FOUND");
+		}
 	
 	
 	}
