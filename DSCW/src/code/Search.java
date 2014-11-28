@@ -1,15 +1,24 @@
 package code;
 
+
 import java.util.HashMap;
+
+import java.util.Map;
+
 
 import externalCode.Book;
 
 public class Search {
 	
 	private HashMap<String,String> books;
-	
+
+	private Map<String, String> map;
+
 	public Search(HashMap books){
 		this.books = books;
+	}
+	public Search(Map<String, String> map){
+		this.map = map;
 	}
 	
 	
@@ -25,8 +34,21 @@ public class Search {
 		return "Success! The word you entered was '" + word + "'.";
 	}
 	 
-	public String getChapterFromBookAndChapNum(String book, int chapNum){
-		return "Success! The book you entered was '" + book + "' and the chapter number was '" + chapNum + "'.";
+	public String getChapterFromBookAndChapNum(String book, String chapNum){
+		
+		String retChap = "";
+		int i = 0;
+		while (i < 99) {
+			try {
+				retChap.concat("\n" + map.get(book+":"+chapNum+":"+i));
+				}
+			catch (NullPointerException e) {
+				break;
+			}
+			i++;
+		}
+		return retChap;	
+		//return "Success! The book you entered was '" + book + "' and the chapter number was '" + chapNum + "'.";
 	}
 	 
 	public String getVersesFromFirstAndLastVerses(String book, int chapNum, int firstVerseNum, int lastVerseNum){

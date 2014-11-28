@@ -9,6 +9,7 @@ public class Tokeniser extends ClassLoader{
 
 
 	private HashMap<String, String> map;
+
 	
 	public Tokeniser(){
 		map = new HashMap<String, String>();
