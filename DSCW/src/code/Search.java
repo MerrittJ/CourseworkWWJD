@@ -56,6 +56,8 @@ public class Search {
 	}
 	 
 	public String getSpecificVerse(String book, int chapNum, int verseNum){
-		return "Success! The book you entered was '" + book + "', the chapter number was '" + chapNum + "' and the verse number was '" + verseNum + "'." ;
+		String ref = book + ":" + chapNum + ":" + verseNum;
+		return map.get(ref);
+	//	return "Success! The book you entered was '" + book + "', the chapter number was '" + chapNum + "' and the verse number was '" + verseNum + "'." ;
 	}
 }
