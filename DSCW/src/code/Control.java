@@ -28,8 +28,8 @@ public class Control {
 
 			File file =  new File(filePathName);
 			
-			books.put("firstValue", toke.loadToo(file, rawFileName).get("Genesis:1:1"));
-			System.out.println(books.get("firstValue"));
+			books.putAll(toke.loadToo(file, rawFileName));
+			
 			System.out.println(rawFileName);
 			
 		}
