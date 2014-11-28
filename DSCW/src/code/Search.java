@@ -1,6 +1,8 @@
 package code;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 public class Search {
@@ -28,27 +30,49 @@ public class Search {
 	public String getChapterFromBookAndChapNum(String book, String chapNum){
 		
 		String retChap = "";
-		int i = 0;
-		while (true) {
-			try {
-				retChap.concat("\n" + map.get(book+":"+chapNum+":"+i));
+		int i = 1;
+		while (i < 99) { // 99 needs to be changed to an actual number???
+				String getV = map.get(book+":"+chapNum+":"+i);
+				if (getV == null) {
+					break;
 				}
-			catch (NullPointerException e) {
-				break;
-			}
+				else {
+				retChap = retChap + "\n" + getV;
+				}
 			i++;
 		}
 		return retChap;	
 		//return "Success! The book you entered was '" + book + "' and the chapter number was '" + chapNum + "'.";
 	}
 	 
-	public String getVersesFromFirstAndLastVerses(String book, int chapNum, int firstVerseNum, int lastVerseNum){
-		return "Success! The book you entered was '" + book + "', the Chapter number was '" + chapNum + "', the first verse number you entered was '" + firstVerseNum + "' and the last verse number you entered was '" + lastVerseNum + "'.";
+	public String getVersesFromFirstAndLastVerses(String book, String chapNum, String firstVerseNum, String lastVerseNum){
+		
+		String retVs = "";
+		int i = Integer.parseInt(firstVerseNum);
+		int lastV = Integer.parseInt(lastVerseNum);
+		while (i <= lastV) {
+			retVs = retVs + map.get(book+":"+chapNum+":"+i) + "\n";
+			i++;
+		}
+		return retVs;
+		
+		
+		//return "Success! The book you entered was '" + book + "', the Chapter number was '" + chapNum + "', the first verse number you entered was '" + firstVerseNum + "' and the last verse number you entered was '" + lastVerseNum + "'.";
 	}
 	 
 	public String getSpecificVerse(String book, String chapNum, String verseNum){
 		String ref = book + ":" + chapNum + ":" + verseNum;
 		return map.get(ref);
 	//	return "Success! The book you entered was '" + book + "', the chapter number was '" + chapNum + "' and the verse number was '" + verseNum + "'." ;
+	}
+	
+	public static void main(String args[]) throws FileNotFoundException {
+		Tokeniser toke= new Tokeniser();
+		File file = new File("src/textDocs/Genesis.txt");
+		
+		Search search = new Search(toke.loadToo(file, "Genesis"));
+		System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1"));
+		System.out.println(search.getSpecificVerse("Genesis", "1", "1"));
+		System.out.println(search.getVersesFromFirstAndLastVerses("Genesis", "1", "1", "5"));
 	}
 }
