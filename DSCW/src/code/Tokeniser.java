@@ -43,8 +43,8 @@ public class Tokeniser extends ClassLoader{
 				
 				verseRef = bookName +":"+ chapNum +":"+ verseNum;
 				
-				System.out.println(verseRef);
-				System.out.println(scanned);
+				/*System.out.println(verseRef);
+				System.out.println(scanned);*/
 				
 				verseNum++;
 				
