@@ -29,7 +29,7 @@ public class Search {
 		
 		String retChap = "";
 		int i = 0;
-		while (i < 99) {
+		while (true) {
 			try {
 				retChap.concat("\n" + map.get(book+":"+chapNum+":"+i));
 				}
