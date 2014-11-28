@@ -1,29 +1,45 @@
 package code;
 
-import java.io.Console;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
-import externalCode.Book;
 
 public class Control {
 
 	//Global Variables
-	private Book[] books;
+	private HashMap<String, HashMap<String, String>> books;
 
 	//Constructor
-	public Control(){
+	public Control() throws FileNotFoundException{
 		Tokeniser toke = new Tokeniser();
 		
-		try{
-			books = toke.build();
-		}
-		catch(Exception e){
-			System.out.println("ERROR:FROM TOKENISER CLASS.");
-		}
+		Scanner fileDirScan = new Scanner(new File("src/textDocs/fileDir.txt"));
+		fileDirScan.useDelimiter("\n");
+		
+		for(int i = 0; i < 66; i++){
+			
+			String rawFileName = fileDirScan.next();
+			String filePathName = rawFileName + ".txt";
+			filePathName = "src/textDocs/" + filePathName;
+			System.out.print(filePathName);
 
+			File file =  new File(filePathName);
+			
+			
+			books.put("" + i, toke.loadToo(file, rawFileName));
+			System.out.println(rawFileName);
+			
+		}
+		fileDirScan.close();
+		
 	}
+	
+		
 
-	public static void main (String args[]){
+	public static void main (String args[]) throws FileNotFoundException{
 		Control control = new Control();
 		control.runProgram();
 	}

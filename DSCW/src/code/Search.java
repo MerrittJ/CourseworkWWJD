@@ -1,12 +1,14 @@
 package code;
 
+import java.util.HashMap;
+
 import externalCode.Book;
 
 public class Search {
 	
-	private Book[] books;
+	private HashMap<String,String> books;
 	
-	public Search(Book[] books){
+	public Search(HashMap books){
 		this.books = books;
 	}
 	
