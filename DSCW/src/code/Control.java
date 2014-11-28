@@ -15,6 +15,7 @@ public class Control {
 	//Constructor
 	public Control() throws FileNotFoundException{
 		Tokeniser toke = new Tokeniser();
+		books = new HashMap<String, String>();
 		
 		Scanner fileDirScan = new Scanner(new File("src/textDocs/fileDir.txt"));
 		fileDirScan.useDelimiter("\n");
@@ -23,15 +24,16 @@ public class Control {
 			
 			String rawFileName = fileDirScan.next().replaceAll("\r", "");
 			String filePathName = "src/textDocs/" + rawFileName + ".txt";
-			System.out.print(filePathName);
+			System.out.println(filePathName);
 
 			File file =  new File(filePathName);
 			
-			
-			books.putAll(toke.loadToo(file, rawFileName));
+			books.put("firstValue", toke.loadToo(file, rawFileName).get("Genesis:1:1"));
+			System.out.println(books.get("firstValue"));
 			System.out.println(rawFileName);
 			
 		}
+		
 		fileDirScan.close();
 		
 	}
