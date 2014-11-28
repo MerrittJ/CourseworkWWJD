@@ -21,9 +21,8 @@ public class Control {
 		
 		for(int i = 0; i < 66; i++){
 			
-			String rawFileName = fileDirScan.next();
-			String filePathName = rawFileName + ".txt";
-			filePathName = "src/textDocs/" + filePathName;
+			String rawFileName = fileDirScan.next().replaceAll("\r", "");
+			String filePathName = "src/textDocs/" + rawFileName + ".txt";
 			System.out.print(filePathName);
 
 			File file =  new File(filePathName);
