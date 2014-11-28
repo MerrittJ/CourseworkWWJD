@@ -16,14 +16,17 @@ public class Search {
 	
 	
 	public String findNumOfTimesFromWord(String word){
+		// returns the number of times a word appears in the whole Bible
 		return "Success! The word you entered was '" + word + "'.";
 	 }
 	
 	public String findVersesFromWord(String word){
+		// returns every verse that a specified word appears in
 		return "Success! The word you entered was '" + word + "'.";
 	}
 	 
 	public String getLocationFromWord(String word){
+		// returns a list of verses that a specified word appears in, formatted as [book chapter:verse]
 		return "Success! The word you entered was '" + word + "'.";
 	}
 	 
