@@ -3,21 +3,12 @@ package code;
 
 import java.util.HashMap;
 
-import java.util.Map;
-
-
-import externalCode.Book;
-
 public class Search {
 	
-	private HashMap<String,String> books;
+	private HashMap<String,String> map;
 
-	private Map<String, String> map;
-
-	public Search(HashMap books){
-		this.books = books;
-	}
-	public Search(Map<String, String> map){
+	
+	public Search(HashMap<String, String> map){
 		this.map = map;
 	}
 	
