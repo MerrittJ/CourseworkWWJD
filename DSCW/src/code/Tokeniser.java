@@ -32,16 +32,22 @@ public class Tokeniser extends ClassLoader{
 			verseSc.useDelimiter("\n");
 			verseSc.next();
 			//Number of verse being loaded. used for making Key reference
-			int verseNum = 0;
+			int verseNum = 1;
 			//concatenation to build hashmap key
 			String verseRef = bookName +":"+ chapNum +":"+ verseNum;
 			
 			while (verseSc.hasNext()) {
-				map.put(verseRef, verseSc.next());
+				
+				String scanned = verseSc.next();
+				map.put(verseRef, scanned);
+				
+				verseRef = bookName +":"+ chapNum +":"+ verseNum;
+				
+				System.out.println(verseRef);
+				System.out.println(scanned);
 				
 				verseNum++;
-				verseRef = bookName +":"+ chapNum +":"+ verseNum;
-				System.out.println(verseRef);
+				
 			}
 			verseSc.close();
 			chapNum++;
