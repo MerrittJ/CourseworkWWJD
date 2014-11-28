@@ -20,7 +20,7 @@ public class Tokeniser extends ClassLoader{
 		chapSc.useDelimiter("CHAPTER");
 		
 		String currentChap = chapSc.next();
-		System.out.println(currentChap);
+		//System.out.println(currentChap);
 		
 		//Number of chapter being loaded. used for making Key reference
 		int chapNum = 1;
@@ -30,7 +30,7 @@ public class Tokeniser extends ClassLoader{
 			currentChap = chapSc.next(); // skip 'Book of xxx' section of text on first run
 			Scanner verseSc = new Scanner(currentChap);
 			verseSc.useDelimiter("\n");
-			verseSc.next();
+			
 			//Number of verse being loaded. used for making Key reference
 			int verseNum = 1;
 			//concatenation to build hashmap key
