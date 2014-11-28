@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Control {
 
 	//Global Variables
-	private HashMap<String, HashMap<String, String>> books;
+	private HashMap<String, String> books;
 
 	//Constructor
 	public Control() throws FileNotFoundException{
@@ -29,7 +29,7 @@ public class Control {
 			File file =  new File(filePathName);
 			
 			
-			books.put("" + i, toke.loadToo(file, rawFileName));
+			books.putAll(toke.loadToo(file, rawFileName));
 			System.out.println(rawFileName);
 			
 		}
