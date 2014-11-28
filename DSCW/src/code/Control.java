@@ -123,7 +123,7 @@ public class Control {
 		
 		System.out.println("");
 		System.out.println("Please enter the chapter number.");
-		int input2 = sc.nextInt();
+		String input2 = sc.next();
 
 		Search search = new Search(books);
 		return search.getChapterFromBookAndChapNum(input1, input2);
@@ -161,11 +161,11 @@ public class Control {
 
 		System.out.println("");
 		System.out.println("Please enter the chapter number.");
-		int input2 = sc.nextInt();
+		String input2 = sc.next();
 
 		System.out.println("");
 		System.out.println("Please enter the verse you would like returned.");
-		int input3 = sc.nextInt();
+		String input3 = sc.next();
 
 		Search search = new Search(books);
 		return search.getSpecificVerse(input1, input2, input3);
