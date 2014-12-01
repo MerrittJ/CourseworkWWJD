@@ -16,7 +16,7 @@ public class Search {
 	}
 	
 	
-	public String findNumOfTimesFromWord(String word){
+	public int findNumOfTimesFromWord(String word){
 		// returns the number of times a word appears in the whole Bible
 		
 		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
@@ -33,8 +33,8 @@ public class Search {
 			}
 			verseSc.close();
 		}
-		String wordCountString = "The word " + word + " appeared " + wordCount + " times."; 
-		return wordCountString;
+		
+		return wordCount;
 		//return "Success! The word you entered was '" + word + "'.";
 	 }
 	
