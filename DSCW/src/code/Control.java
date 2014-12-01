@@ -129,9 +129,9 @@ public class Control {
 		String input = sc.next();
 		
 		Search search = new Search(books);
-		
-		return search.findNumOfTimesFromWord(input);
-		
+		int wordCount = search.findNumOfTimesFromWord(input);
+		String wordCountString = "The word " + input + " appeared " + wordCount + " times."; 
+		return wordCountString;
 		
 	}
 

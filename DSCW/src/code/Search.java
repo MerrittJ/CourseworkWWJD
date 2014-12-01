@@ -4,6 +4,7 @@ package code;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Search {
 	
@@ -15,13 +16,31 @@ public class Search {
 	}
 	
 	
-	public String findNumOfTimesFromWord(String word){
+	public int findNumOfTimesFromWord(String word){
 		// returns the number of times a word appears in the whole Bible
-		return "Success! The word you entered was '" + word + "'.";
+		
+		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
+		int wordCount = 0;
+		for (String verse : map.values()) {
+			String cleanVerse = verse.replaceAll("[^a-zA-Z\\s]", "");
+			cleanVerse = cleanVerse.toLowerCase();
+			Scanner verseSc = new Scanner(cleanVerse);
+			verseSc.useDelimiter(" ");
+			while (verseSc.hasNext()) {
+				if (verseSc.next().equals(word)) {
+					wordCount++;
+				}
+			}
+			verseSc.close();
+		}
+		
+		return wordCount;
+		//return "Success! The word you entered was '" + word + "'.";
 	 }
 	
 	public String findVersesFromWord(String word){
 		// returns every verse that a specified word appears in
+		
 		return "Success! The word you entered was '" + word + "'.";
 	}
 	 
@@ -40,7 +59,7 @@ public class Search {
 					break;
 				}
 				else {
-				retChap = retChap + "\n" + getV;
+				retChap = retChap + getV + "\n";
 				}
 			i++;
 		}
@@ -74,8 +93,10 @@ public class Search {
 		File file = new File("src/textDocs/Genesis.txt");
 		
 		Search search = new Search(toke.loadToo(file, "Genesis"));
-		System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1"));
+		System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1")); // ignore the mystery newline at the end of Genesis 1, there's a carriage return in the .txt
 		System.out.println(search.getSpecificVerse("Genesis", "1", "1"));
 		System.out.println(search.getVersesFromFirstAndLastVerses("Genesis", "1", "1", "5"));
+		
+		System.out.println(search.findNumOfTimesFromWord("Thee"));
 	}
 }
