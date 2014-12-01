@@ -55,7 +55,7 @@ public class Control {
 				run = false;
 			}
 		}
-			System.out.println("\n\n" + "End. Application Exited.");	
+			System.out.println("\n\n" + "Application Exited.");	
 	}
 	
 	public void runGUI(){
