@@ -67,7 +67,8 @@ public class Tokeniser extends ClassLoader{
 	public static void main(String args[]) throws FileNotFoundException{
 		Tokeniser toke= new Tokeniser();
 		File file = new File("src/textDocs/Psalms.txt");
-		toke.loadToo(file, "Psalms");
+		HashMap<String, String> map2 = toke.loadToo(file, "Psalms");
+		String[] new1 = {"we", "car"};
 	}
 	
 }
