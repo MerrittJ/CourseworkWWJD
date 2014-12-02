@@ -22,7 +22,7 @@ public class Control {
 		
 		for(int i = 0; i < 66; i++){
 			
-			String rawFileName = fileDirScan.next().replaceAll("\r", "");
+			String rawFileName = fileDirScan.next();//.replaceAll("\r", "");
 			String filePathName = "src/textDocs/" + rawFileName + ".txt";
 
 			File file =  new File(filePathName);
@@ -163,11 +163,19 @@ public class Control {
 		System.out.println("Please enter the book that the chapter you are searching for appears in.");
 		Scanner sc = new Scanner(System.in);
 		String input1 = sc.next();
+		String input2 = "";
 		
-		System.out.println("");
-		System.out.println("Please enter the chapter number.");
-		String input2 = sc.next();
-
+		if(input1.equals("Psalms")){
+			System.out.println("");
+			System.out.println("Please enter the Psalm number.");
+			input2 = sc.next();
+		}
+		else{
+			System.out.println("");
+			System.out.println("Please enter the chapter number.");
+			input2 = sc.next();
+		}
+		
 		Search search = new Search(books);
 
 		return search.getChapterFromBookAndChapNum(input1, input2);
@@ -179,10 +187,18 @@ public class Control {
 		System.out.println("Please enter the book that the chapter you are searching for appears in.");
 		Scanner sc = new Scanner(System.in);
 		String input1 = sc.next();
-
-		System.out.println("");
-		System.out.println("Please enter the chapter number.");
-		String input2 = sc.next();
+		String input2 = "";
+		
+		if(input1.equals("Psalms")){
+			System.out.println("");
+			System.out.println("Please enter the Psalm number.");
+			input2 = sc.next();
+		}
+		else{
+			System.out.println("");
+			System.out.println("Please enter the chapter number.");
+			input2 = sc.next();
+		}
 
 		System.out.println("");
 		System.out.println("Please enter the first verse you would like returned.");
@@ -208,10 +224,18 @@ public class Control {
 			System.out.println("Please enter the book that the chapter you are searching for appears in.");
 			Scanner sc = new Scanner(System.in);
 			String input1 = sc.next();
-	
-			System.out.println("");
-			System.out.println("Please enter the chapter number.");
-			String input2 = sc.next();
+			String input2 = "";
+			
+			if(input1.equals("Psalms")){
+				System.out.println("");
+				System.out.println("Please enter the Psalm number.");
+				input2 = sc.next();
+			}
+			else{
+				System.out.println("");
+				System.out.println("Please enter the chapter number.");
+				input2 = sc.next();
+			}
 	
 			System.out.println("");
 			System.out.println("Please enter the verse you would like returned.");
