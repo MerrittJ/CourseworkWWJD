@@ -17,7 +17,13 @@ public class Tokeniser extends ClassLoader{
 	
 	public HashMap<String, String> loadToo(File file, String bookName) throws FileNotFoundException {
 		Scanner chapSc = new Scanner(file);
+		
+		if (bookName.equals("Psalms")) {
+			chapSc.useDelimiter("PSALM");
+		}
+		else if (!bookName.equals("Psalms")){
 		chapSc.useDelimiter("CHAPTER");
+		}
 		
 		String currentChap = chapSc.next();
 		//System.out.println(currentChap);
