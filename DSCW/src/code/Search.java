@@ -23,6 +23,7 @@ public class Search {
 		int wordCount = 0;
 		for (String verse : map.values()) {
 			String cleanVerse = verse.replaceAll("[^a-zA-Z\\s]", "");
+			cleanVerse = cleanVerse.replaceAll("\r", "");
 			cleanVerse = cleanVerse.toLowerCase();
 			Scanner verseSc = new Scanner(cleanVerse);
 			verseSc.useDelimiter(" ");
@@ -93,10 +94,10 @@ public class Search {
 		File file = new File("src/textDocs/Genesis.txt");
 		
 		Search search = new Search(toke.loadToo(file, "Genesis"));
-		System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1")); // ignore the mystery newline at the end of Genesis 1, there's a carriage return in the .txt
-		System.out.println(search.getSpecificVerse("Genesis", "1", "1"));
-		System.out.println(search.getVersesFromFirstAndLastVerses("Genesis", "1", "1", "5"));
+		//System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1")); // ignore the mystery newline at the end of Genesis 1, there's a carriage return in the .txt
+		//System.out.println(search.getSpecificVerse("Genesis", "1", "1"));
+		//System.out.println(search.getVersesFromFirstAndLastVerses("Genesis", "1", "1", "5"));
 		
-		System.out.println(search.findNumOfTimesFromWord("Thee"));
+		System.out.println(search.findNumOfTimesFromWord("day"));
 	}
 }
