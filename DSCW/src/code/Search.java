@@ -91,13 +91,12 @@ public class Search {
 	
 	public static void main(String args[]) throws FileNotFoundException {
 		Tokeniser toke= new Tokeniser();
-		File file = new File("src/textDocs/Genesis.txt");
+		File file = new File("src/textDocs/Psalms.txt");
 		
-		Search search = new Search(toke.loadToo(file, "Genesis"));
+		Search search = new Search(toke.loadToo(file, "Psalms"));
 		//System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1")); // ignore the mystery newline at the end of Genesis 1, there's a carriage return in the .txt
-		//System.out.println(search.getSpecificVerse("Genesis", "1", "1"));
+		System.out.println(search.getSpecificVerse("Psalms", "1", "1"));
 		//System.out.println(search.getVersesFromFirstAndLastVerses("Genesis", "1", "1", "5"));
-		
-		System.out.println(search.findNumOfTimesFromWord("day"));
+		System.out.println(search.findNumOfTimesFromWord("God"));
 	}
 }
