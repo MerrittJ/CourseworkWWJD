@@ -41,7 +41,7 @@ public class Search {
 	
 	public String findVersesFromWord(String word){
 		// returns every verse that a specified word appears in
-		
+		/*
 		//return "Success! The word you entered was '" + word + "'.";
 		String locations = getLocationFromWord(word);
 		Scanner locScan = new Scanner(word);
@@ -57,7 +57,7 @@ public class Search {
 		
 		}
 		
-		
+		*/
 		return "string";
 	
 	}

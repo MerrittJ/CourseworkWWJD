@@ -22,7 +22,7 @@ public class Control {
 		
 		for(int i = 0; i < 66; i++){
 			
-			String rawFileName = fileDirScan.next();//.replaceAll("\r", "");
+			String rawFileName = fileDirScan.next().replaceAll("\r", "");
 			String filePathName = "src/textDocs/" + rawFileName + ".txt";
 
 			File file =  new File(filePathName);
