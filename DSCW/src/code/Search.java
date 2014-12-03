@@ -42,7 +42,24 @@ public class Search {
 	public String findVersesFromWord(String word){
 		// returns every verse that a specified word appears in
 		
-		return "Success! The word you entered was '" + word + "'.";
+		//return "Success! The word you entered was '" + word + "'.";
+		String locations = getLocationFromWord(word);
+		Scanner locScan = new Scanner(word);
+		locScan.useDelimiter("\n");
+		
+		String[] locCollec = new String[];
+		
+		int i = 0;
+		while(locScan.hasNext()){
+			
+		locCollec[i] = locScan.next();
+		
+		
+		}
+		
+		
+		return "string";
+	
 	}
 	 
 	public String getLocationFromWord(String word){
