@@ -3,6 +3,7 @@ package code;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -153,8 +154,12 @@ public class Control {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		Search search = new Search(books);
-
-		return search.getLocationFromWord(input);
+		ArrayList verseLocArray = search.getLocationFromWord(input);
+		String verseReturn = verseLocArray.size() + " ";
+		for(int i = 0; i<verseLocArray.size(); i++){
+			 verseReturn = verseReturn + verseLocArray.get(i) + " ";
+		}
+		return verseReturn;
 	}
 
 	public String getChapterFromBookAndChapNum(){

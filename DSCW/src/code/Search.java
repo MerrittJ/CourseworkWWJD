@@ -45,7 +45,7 @@ public class Search {
 	 }
 	
 	public String findVersesFromWord(String word){
-		// returns every verse that a specified word appears in
+//		 returns every verse that a specified word appears in
 //		
 //		return "Success! The word you entered was '" + word + "'.";
 //		String locations = getLocationFromWord(word);
@@ -61,13 +61,19 @@ public class Search {
 //		
 //		
 //		}
-//		
 		
-		return "string";
+		ArrayList verseLocArray = getLocationFromWord(word);
+		String verseReturn = " ";
+//		for(int i = 0; i<verseLocArray.size(); i++){
+//			getSpecificVerse(String book, String chapNum, String verseNum);
+//			//verseReturn = verseReturn + verseLocArray.get(i) + " ";
+//			 
+//		}
+		return verseReturn;
 	
 	}
 	 
-	public String getLocationFromWord(String word){
+	public ArrayList getLocationFromWord(String word){
 		// returns a list of verses that a specified word appears in, formatted as [book chapter:verse]
 		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
 		
@@ -93,11 +99,7 @@ public class Search {
 			verseSc.close();
 			}
 		
-		String verseReturn = verseLocArray.size() + " ";
-		for(int i = 0; i<verseLocArray.size(); i++){
-			 verseReturn = verseReturn + verseLocArray.get(i) + " ";
-		}
-		return verseReturn;
+		return verseLocArray;
 	}
 	 
 	public String getChapterFromBookAndChapNum(String book, String chapNum){
