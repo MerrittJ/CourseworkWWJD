@@ -46,23 +46,23 @@ public class Search {
 	
 	public String findVersesFromWord(String word){
 		// returns every verse that a specified word appears in
-		/*
-		//return "Success! The word you entered was '" + word + "'.";
-		String locations = getLocationFromWord(word);
-		Scanner locScan = new Scanner(word);
-		locScan.useDelimiter("\n");
+//		
+//		return "Success! The word you entered was '" + word + "'.";
+//		String locations = getLocationFromWord(word);
+//		Scanner locScan = new Scanner(word);
+//		locScan.useDelimiter("\n");
+//		
+//		String[] locCollec = new String[];
+//		
+//		int i = 0;
+//		while(locScan.hasNext()){
+//			
+//		locCollec[i] = locScan.next();
+//		
+//		
+//		}
+//		
 		
-		String[] locCollec = new String[];
-		
-		int i = 0;
-		while(locScan.hasNext()){
-			
-		locCollec[i] = locScan.next();
-		
-		
-		}
-		
-		*/
 		return "string";
 	
 	}
@@ -70,7 +70,7 @@ public class Search {
 	public String getLocationFromWord(String word){
 		// returns a list of verses that a specified word appears in, formatted as [book chapter:verse]
 		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
-		int wordCount = 0;
+		
 		Set<Entry<String, String>> keySet = map.entrySet();
 		ArrayList<String> verseLocArray = new ArrayList();
 		for (String verse : map.values()) {
@@ -81,7 +81,6 @@ public class Search {
 			verseSc.useDelimiter(" ");
 			while (verseSc.hasNext()) {
 				if (verseSc.next().equals(word)) {
-					wordCount++;
 				for(Map.Entry<String, String> e: keySet){
 						String verseLoc = e.getKey();
 						String verseContents = e.getValue();
@@ -93,10 +92,10 @@ public class Search {
 			}
 			verseSc.close();
 			}
-		//return "Success! The word you entered was '" + word + "'.";
-		String verseReturn = null;
+		
+		String verseReturn = verseLocArray.size() + " ";
 		for(int i = 0; i<verseLocArray.size(); i++){
-			 verseReturn = verseReturn + verseLocArray.get(i);
+			 verseReturn = verseReturn + verseLocArray.get(i) + " ";
 		}
 		return verseReturn;
 	}
