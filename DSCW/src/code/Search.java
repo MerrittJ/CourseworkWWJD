@@ -3,8 +3,13 @@ package code;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Search {
 	
@@ -64,7 +69,36 @@ public class Search {
 	 
 	public String getLocationFromWord(String word){
 		// returns a list of verses that a specified word appears in, formatted as [book chapter:verse]
-		return "Success! The word you entered was '" + word + "'.";
+		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
+		int wordCount = 0;
+		Set<Entry<String, String>> keySet = map.entrySet();
+		ArrayList<String> verseLocArray = new ArrayList();
+		for (String verse : map.values()) {
+			String cleanVerse = verse.replaceAll("[^a-zA-Z\\s]", "");
+			cleanVerse = cleanVerse.replaceAll("\r", "");
+			cleanVerse = cleanVerse.toLowerCase();
+			Scanner verseSc = new Scanner(cleanVerse);
+			verseSc.useDelimiter(" ");
+			while (verseSc.hasNext()) {
+				if (verseSc.next().equals(word)) {
+					wordCount++;
+				for(Map.Entry<String, String> e: keySet){
+						String verseLoc = e.getKey();
+						String verseContents = e.getValue();
+						if(verseContents.equals(verse)){
+							verseLocArray.add(verseLoc);
+						}
+					}
+				}
+			}
+			verseSc.close();
+			}
+		//return "Success! The word you entered was '" + word + "'.";
+		String verseReturn = null;
+		for(int i = 0; i<verseLocArray.size(); i++){
+			 verseReturn = verseReturn + verseLocArray.get(i);
+		}
+		return verseReturn;
 	}
 	 
 	public String getChapterFromBookAndChapNum(String book, String chapNum){
