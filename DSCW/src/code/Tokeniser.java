@@ -17,15 +17,17 @@ public class Tokeniser extends ClassLoader{
 	
 	public HashMap<String, String> loadToo(File file, String bookName) throws FileNotFoundException {
 		Scanner chapSc = new Scanner(file);
+		String currentChap;
 		
 		if (bookName.equals("Psalms")) {
 			chapSc.useDelimiter("PSALM");
+			chapSc.next();
 		}
 		else if (!bookName.equals("Psalms")){
 		chapSc.useDelimiter("CHAPTER");
 		}
 		
-		String currentChap = chapSc.next();
+		currentChap = chapSc.next();
 		//System.out.println(currentChap);
 		
 		//Number of chapter being loaded. used for making Key reference
@@ -36,7 +38,9 @@ public class Tokeniser extends ClassLoader{
 			currentChap = chapSc.next(); // skip 'Book of xxx' section of text on first run
 			Scanner verseSc = new Scanner(currentChap);
 			verseSc.useDelimiter("\n");
-			
+			if (bookName.equals("Psalms") && chapNum > 2) {
+				verseSc.next();
+			}
 			//Number of verse being loaded. used for making Key reference
 			int verseNum = 1;
 			//concatenation to build hashmap key

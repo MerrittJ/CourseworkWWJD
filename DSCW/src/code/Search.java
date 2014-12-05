@@ -41,13 +41,11 @@ public class Search {
 		}
 		
 		return wordCount;
-		//return "Success! The word you entered was '" + word + "'.";
-	 }
+		 }
 	
 	public String findVersesFromWord(String word){
 //		 returns every verse that a specified word appears in
 //		
-//		return "Success! The word you entered was '" + word + "'.";
 //		String locations = getLocationFromWord(word);
 //		Scanner locScan = new Scanner(word);
 //		locScan.useDelimiter("\n");
@@ -74,7 +72,6 @@ public class Search {
 	}
 	 
 	public ArrayList getLocationFromWord(String word){
-		// returns a list of verses that a specified word appears in, formatted as [book chapter:verse]
 		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
 		
 		Set<Entry<String, String>> keySet = map.entrySet();
@@ -117,7 +114,6 @@ public class Search {
 			i++;
 		}
 		return retChap;	
-		//return "Success! The book you entered was '" + book + "' and the chapter number was '" + chapNum + "'.";
 	}
 	 
 	public String getVersesFromFirstAndLastVerses(String book, String chapNum, String firstVerseNum, String lastVerseNum){
@@ -132,13 +128,11 @@ public class Search {
 		return retVs;
 		
 		
-		//return "Success! The book you entered was '" + book + "', the Chapter number was '" + chapNum + "', the first verse number you entered was '" + firstVerseNum + "' and the last verse number you entered was '" + lastVerseNum + "'.";
 	}
 	 
 	public String getSpecificVerse(String book, String chapNum, String verseNum){
 		String ref = book + ":" + chapNum + ":" + verseNum;
 		return map.get(ref);
-	//	return "Success! The book you entered was '" + book + "', the chapter number was '" + chapNum + "' and the verse number was '" + verseNum + "'." ;
 	}
 	
 	public static void main(String args[]) throws FileNotFoundException {
@@ -146,9 +140,7 @@ public class Search {
 		File file = new File("src/textDocs/Psalms.txt");
 		
 		Search search = new Search(toke.loadToo(file, "Psalms"));
-		//System.out.println(search.getChapterFromBookAndChapNum("Genesis", "1")); // ignore the mystery newline at the end of Genesis 1, there's a carriage return in the .txt
-		System.out.println(search.getSpecificVerse("Psalms", "1", "1"));
-		//System.out.println(search.getVersesFromFirstAndLastVerses("Genesis", "1", "1", "5"));
-		System.out.println(search.findNumOfTimesFromWord("God"));
+		
+		System.out.println(search.getSpecificVerse("Psalms", "2", "13"));
 	}
 }
