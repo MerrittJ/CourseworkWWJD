@@ -38,6 +38,7 @@ public class Tokeniser extends ClassLoader{
 			currentChap = chapSc.next(); // skip 'Book of xxx' section of text on first run
 			Scanner verseSc = new Scanner(currentChap);
 			verseSc.useDelimiter("\n");
+			//if Statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
 			if (bookName.equals("Psalms") && chapNum > 2) {
 				verseSc.next();
 			}
