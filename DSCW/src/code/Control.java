@@ -154,7 +154,7 @@ public class Control {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		Search search = new Search(books);
-		ArrayList verseLocArray = search.getLocationFromWord(input);
+		ArrayList verseLocArray = search.getLocationsFromWord(input);
 		String verseReturn = verseLocArray.size() + " ";
 		for(int i = 0; i<verseLocArray.size(); i++){
 			 verseReturn = verseReturn + verseLocArray.get(i) + " ";

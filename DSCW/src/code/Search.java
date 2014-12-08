@@ -4,12 +4,14 @@ package code;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class Search {
 	
@@ -45,43 +47,34 @@ public class Search {
 	
 	public String findVersesFromWord(String word){
 //		 returns every verse that a specified word appears in
-//		
-//		String locations = getLocationFromWord(word);
-//		Scanner locScan = new Scanner(word);
-//		locScan.useDelimiter("\n");
-//		
-//		String[] locCollec = new String[];
-//		
-//		int i = 0;
-//		while(locScan.hasNext()){
-//			
-//		locCollec[i] = locScan.next();
-//		
-//		
-//		}
 		
-		ArrayList verseLocArray = getLocationFromWord(word);
-		String verseReturn = " ";
-//		for(int i = 0; i<verseLocArray.size(); i++){
-//			getSpecificVerse(String book, String chapNum, String verseNum);
-//			//verseReturn = verseReturn + verseLocArray.get(i) + " ";
-//			 
-//		}
-		return verseReturn;
+		ArrayList<String> verseLocations = getLocationsFromWord(word);
+		String result = "";	
+		
+		for (String ver : verseLocations){
+			result = result + map.get(ver) + "\n";
+		}
+		return result;
 	
 	}
 	 
-	public ArrayList getLocationFromWord(String word){
+	public ArrayList<String> getLocationsFromWord(String word){
 		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
 		
+//		TreeMap<String, String> sortableMap = new TreeMap<String, String>();
+//		sortableMap.putAll(map);
+		
+		
 		Set<Entry<String, String>> keySet = map.entrySet();
-		ArrayList<String> verseLocArray = new ArrayList();
+		ArrayList<String> verseLocArray = new ArrayList<String>();
+		
 		for (String verse : map.values()) {
 			String cleanVerse = verse.replaceAll("[^a-zA-Z\\s]", "");
 			cleanVerse = cleanVerse.replaceAll("\r", "");
 			cleanVerse = cleanVerse.toLowerCase();
 			Scanner verseSc = new Scanner(cleanVerse);
 			verseSc.useDelimiter(" ");
+			
 			while (verseSc.hasNext()) {
 				if (verseSc.next().equals(word)) {
 				for(Map.Entry<String, String> e: keySet){
@@ -96,6 +89,7 @@ public class Search {
 			verseSc.close();
 			}
 		
+		Collections.sort(verseLocArray);
 		return verseLocArray;
 	}
 	 
@@ -122,7 +116,7 @@ public class Search {
 		int i = Integer.parseInt(firstVerseNum);
 		int lastV = Integer.parseInt(lastVerseNum);
 		while (i <= lastV) {
-			retVs = retVs + map.get(book+":"+chapNum+":"+i) + "\n";
+			retVs = retVs + map.get(book+" "+chapNum+":"+i) + "\n";
 			i++;
 		}
 		return retVs;
@@ -131,16 +125,18 @@ public class Search {
 	}
 	 
 	public String getSpecificVerse(String book, String chapNum, String verseNum){
-		String ref = book + ":" + chapNum + ":" + verseNum;
+		String ref = book + " " + chapNum + ":" + verseNum;
 		return map.get(ref);
 	}
 	
 	public static void main(String args[]) throws FileNotFoundException {
 		Tokeniser toke= new Tokeniser();
-		File file = new File("src/textDocs/Psalms.txt");
+		File file = new File("src/textDocs/Genesis.txt");
 		
-		Search search = new Search(toke.loadToo(file, "Psalms"));
+		Search search = new Search(toke.loadToo(file, "Genesis"));
 		
-		System.out.println(search.getSpecificVerse("Psalms", "2", "13"));
+		System.out.println(search.getSpecificVerse("Genesis", "2", "13"));
+		System.out.println(search.findVersesFromWord("day"));
+		
 	}
 }
