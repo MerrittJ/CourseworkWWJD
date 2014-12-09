@@ -93,45 +93,51 @@ public class Control {
 					input = 7;
 				}
 				
+				String returnString = null;
 				
 				/*Set of checks made to see which feature the user has selected.*/
-				
 					if(input == 1){
-						System.out.println("\n\n" + findNumofTimesFromWord());
+						returnString = findNumofTimesFromWord();
 						System.out.println("");
 						run = false;
 					}
 					else if(input == 2){
-						System.out.println("\n\n" + findVersesFromWord());
-						System.out.println("");
+						returnString = findVersesFromWord();
 						run = false;
 					}
 					else if(input == 3){
-						System.out.println("\n\n" + getLocationFromWord());
-						System.out.println("");
+						returnString = getLocationFromWord();
 						run = false;
 					}
 					else if(input == 4){
-						System.out.println("\n\n" + getChapterFromBookAndChapNum());
-						System.out.println("");
+						returnString = getChapterFromBookAndChapNum();
 						run = false;
 					}
 					else if(input == 5){
-						System.out.println("\n\n" + getVersesFromFirstAndLastVerses());
-						System.out.println("");
+						returnString = getVersesFromFirstAndLastVerses();
 						run = false;
 					}
 					else if(input == 6){
-						System.out.println("\n\n" + getSpecificVerse() + "");
-						System.out.println("");
+						returnString = getSpecificVerse();
 						run = false;
 					}
 					else{
 						System.out.println("Incorrect option chosen please try again.");
 						run = true;
 					}
+					
+					
+					if(input<7){
+						if(returnString.equals("")){
+							System.out.println("Sorry no matches were found, please try again.");
+						}
+						else{
+						System.out.println("\n\n" + returnString);
+						System.out.println("");
+						}
+					}
 				
-			}	
+				
 		}
 
 	public String findNumofTimesFromWord(){
