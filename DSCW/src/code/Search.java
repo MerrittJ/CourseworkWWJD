@@ -84,6 +84,7 @@ public class Search {
 							verseLocArray.add(verseLoc);
 						}
 					}
+				break;
 				}
 			}
 			verseSc.close();
