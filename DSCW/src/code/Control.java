@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -79,14 +80,18 @@ public class Control {
 				boolean run = true;
 				while(run){
 				/*Scanner is instantiated to read input from the command line*/
+				
+					
 				Scanner sc = new Scanner(System.in);
-				int input = sc.nextInt();
+				int input;
 				
 				/*Set of checks made to see which feature the user has selected.*/
 				if(input == 1){
 					System.out.println("\n\n\t" + findNumofTimesFromWord());
 					System.out.println("");
 					run = false;
+				try{
+				input = sc.nextInt();
 				}
 				else if(input == 2){
 					System.out.println("\n\n\t" + findVersesFromWord());
@@ -115,9 +120,49 @@ public class Control {
 				}
 				else{
 					System.out.println("Incorrect option chosen please try again.");
+				catch(Exception e){
 					run = true;
+					input = 7;
 				}
-
+				
+				
+				/*Set of checks made to see which feature the user has selected.*/
+				
+					if(input == 1){
+						System.out.println("\n\n" + findNumofTimesFromWord());
+						System.out.println("");
+						run = false;
+					}
+					else if(input == 2){
+						System.out.println("\n\n" + findVersesFromWord());
+						System.out.println("");
+						run = false;
+					}
+					else if(input == 3){
+						System.out.println("\n\n" + getLocationFromWord());
+						System.out.println("");
+						run = false;
+					}
+					else if(input == 4){
+						System.out.println("\n\n" + getChapterFromBookAndChapNum());
+						System.out.println("");
+						run = false;
+					}
+					else if(input == 5){
+						System.out.println("\n\n" + getVersesFromFirstAndLastVerses());
+						System.out.println("");
+						run = false;
+					}
+					else if(input == 6){
+						System.out.println("\n\n" + getSpecificVerse() + "");
+						System.out.println("");
+						run = false;
+					}
+					else{
+						System.out.println("Incorrect option chosen please try again.");
+						run = true;
+					}
+				
 			}	
 		}
 
@@ -154,11 +199,12 @@ public class Control {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		Search search = new Search(books);
-		String result = "";
-		for (String verse : search.getLocationsFromWord(input)){
-			result = result + verse + "\n";
+		ArrayList verseLocArray = search.getLocationsFromWord(input);
+		String verseReturn = verseLocArray.size() + " ";
+		for(int i = 0; i<verseLocArray.size(); i++){
+			 verseReturn = verseReturn + verseLocArray.get(i) + " ";
 		}
-		return result;
+		return verseReturn;
 	}
 
 	public String getChapterFromBookAndChapNum(){
