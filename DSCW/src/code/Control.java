@@ -23,7 +23,7 @@ public class Control {
 		
 		for(int i = 0; i < 66; i++){
 			
-			String rawFileName = fileDirScan.next().replaceAll("\r", "");
+			String rawFileName = fileDirScan.next();//.replaceAll("\r", "");
 			String filePathName = "src/textDocs/" + rawFileName + ".txt";
 
 			File file =  new File(filePathName);
@@ -84,32 +84,32 @@ public class Control {
 				
 				/*Set of checks made to see which feature the user has selected.*/
 				if(input == 1){
-					System.out.println("\n\n" + findNumofTimesFromWord());
+					System.out.println("\n\n\t" + findNumofTimesFromWord());
 					System.out.println("");
 					run = false;
 				}
 				else if(input == 2){
-					System.out.println("\n\n" + findVersesFromWord());
+					System.out.println("\n\n\t" + findVersesFromWord());
 					System.out.println("");
 					run = false;
 				}
 				else if(input == 3){
-					System.out.println("\n\n" + getLocationFromWord());
+					System.out.println("\n\n\t" + getLocationFromWord());
 					System.out.println("");
 					run = false;
 				}
 				else if(input == 4){
-					System.out.println("\n\n" + getChapterFromBookAndChapNum());
+					System.out.println("\n\n\t" + getChapterFromBookAndChapNum());
 					System.out.println("");
 					run = false;
 				}
 				else if(input == 5){
-					System.out.println("\n\n" + getVersesFromFirstAndLastVerses());
+					System.out.println("\n\n\t" + getVersesFromFirstAndLastVerses());
 					System.out.println("");
 					run = false;
 				}
 				else if(input == 6){
-					System.out.println("\n\n" + getSpecificVerse() + "");
+					System.out.println("\n\n\t" + getSpecificVerse() + "");
 					System.out.println("");
 					run = false;
 				}
@@ -147,19 +147,15 @@ public class Control {
 		return search.findVersesFromWord(input);
 	}
 
-	public String getLocationFromWord(){
+	public ArrayList<String> getLocationFromWord(){
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Please enter the word you would like searched and the locations of that word will appear below in the format as shown above.");
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		Search search = new Search(books);
-		ArrayList verseLocArray = search.getLocationsFromWord(input);
-		String verseReturn = verseLocArray.size() + " ";
-		for(int i = 0; i<verseLocArray.size(); i++){
-			 verseReturn = verseReturn + verseLocArray.get(i) + " ";
-		}
-		return verseReturn;
+
+		return search.getLocationsFromWord(input);
 	}
 
 	public String getChapterFromBookAndChapNum(){
