@@ -217,6 +217,7 @@ public class Control {
 		Scanner sc = new Scanner(System.in);
 		String input1 = sc.next();
 		String input2 = "";
+		Search search = new Search(books);
 		
 		if(input1.equals("Psalms")){
 			System.out.println("");
@@ -228,17 +229,27 @@ public class Control {
 			System.out.println("Please enter the chapter number.");
 			input2 = sc.next();
 		}
-
-		System.out.println("");
-		System.out.println("Please enter the first verse you would like returned.");
-		String input3 = sc.next();
-
-		System.out.println("");
-		System.out.println("Please enter the last verse you would like returned.");
-		String input4 = sc.next();
-
-		Search search = new Search(books);
-
+		
+		boolean stop = false;
+		String input3 = "";
+		String input4 = "";
+		
+		while(stop == false){
+			System.out.println("");
+			System.out.println("Please enter the first verse you would like returned.");
+			input3 = sc.next();
+	
+			System.out.println("");
+			System.out.println("Please enter the last verse you would like returned.");
+			input4 = sc.next();
+			
+			if(Integer.parseInt(input3)>Integer.parseInt(input4)){
+				System.out.println("The first verse you entered appears after the last verse please try again.");
+			}
+			else{
+				stop = true;
+			}
+		}
 		return search.getVersesFromFirstAndLastVerses(input1, input2, input3, input4);
 	}
 
