@@ -85,9 +85,41 @@ public class Control {
 				Scanner sc = new Scanner(System.in);
 				int input;
 				
+				/*Set of checks made to see which feature the user has selected.*/
+				if(input == 1){
+					System.out.println("\n\n\t" + findNumofTimesFromWord());
+					System.out.println("");
+					run = false;
 				try{
 				input = sc.nextInt();
 				}
+				else if(input == 2){
+					System.out.println("\n\n\t" + findVersesFromWord());
+					System.out.println("");
+					run = false;
+				}
+				else if(input == 3){
+					System.out.println("\n\n\t" + getLocationFromWord());
+					System.out.println("");
+					run = false;
+				}
+				else if(input == 4){
+					System.out.println("\n\n\t" + getChapterFromBookAndChapNum());
+					System.out.println("");
+					run = false;
+				}
+				else if(input == 5){
+					System.out.println("\n\n\t" + getVersesFromFirstAndLastVerses());
+					System.out.println("");
+					run = false;
+				}
+				else if(input == 6){
+					System.out.println("\n\n\t" + getSpecificVerse() + "");
+					System.out.println("");
+					run = false;
+				}
+				else{
+					System.out.println("Incorrect option chosen please try again.");
 				catch(Exception e){
 					run = true;
 					input = 7;
