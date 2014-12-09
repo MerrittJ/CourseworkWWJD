@@ -98,7 +98,7 @@ public class Search {
 		String retChap = "";
 		int i = 1;
 		while (i < 99) { // 99 needs to be changed to an actual number???
-				String getV = map.get(book+":"+chapNum+":"+i);
+				String getV = map.get(book+" "+chapNum+":"+i);
 				if (getV == null) {
 					break;
 				}
