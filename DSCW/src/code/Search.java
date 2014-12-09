@@ -13,16 +13,32 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
+/**
+ * Class responsible for searching through HashMaps to find word counts, word locations, and verses
+ * 
+ * @author Josh Merritt, Theo Matthews
+ *
+ */
 public class Search {
 	
+	/**
+	 * HashMap variable to hold a single book
+	 */
 	private HashMap<String,String> map;
 
-	
+	/**
+	 * Constructor assigning parameter to global variable
+	 * @param map
+	 */
 	public Search(HashMap<String, String> map){
 		this.map = map;
 	}
 	
-	
+	/**
+	 * Method to find the number of times a word appears in the entire Bible
+	 * @param word you wish you search for
+	 * @return the number of times it appears
+	 */
 	public int findNumOfTimesFromWord(String word){
 		// returns the number of times a word appears in the whole Bible
 		
@@ -45,6 +61,11 @@ public class Search {
 		return wordCount;
 		 }
 	
+	/**
+	 * Method to return verses that a given word appears in. If a word appears more than once in a verse, the verse only appears once in the return result. This returns the whole verse.
+	 * @param word you wish to search verses for
+	 * @return a string of all the verses the word appears in
+	 */
 	public String findVersesFromWord(String word){
 //		 returns every verse that a specified word appears in
 		
@@ -57,7 +78,11 @@ public class Search {
 		return result;
 	
 	}
-	 
+	 /**
+	  * Method to get the locations of verses where a given word appears in. If a word appears more than once in a verse, the location only appears once in the return result. This returns the location of the verse.
+	  * @param word you wish to search verses for
+	  * @return an ArrayList of each of the locations 
+	  */
 	public ArrayList<String> getLocationsFromWord(String word){
 		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
 		
@@ -94,6 +119,12 @@ public class Search {
 		return verseLocArray;
 	}
 	 
+	/**
+	 * Method to return a chapter given the book and chapter number.
+	 * @param book the desired chapter is found in
+	 * @param chapNum - the chapter/psalm number to be returned
+	 * @return a string of all the verses in the desired chapter, separated by newlines
+	 */
 	public String getChapterFromBookAndChapNum(String book, String chapNum){
 		
 		String retChap = "";
@@ -111,6 +142,14 @@ public class Search {
 		return retChap;	
 	}
 	 
+	/**
+	 * Method to return all verses between two verses
+	 * @param book that the verses are found in
+	 * @param chapNum - chapter/psalm number the verses are found in
+	 * @param firstVerseNum - verse number at start of block of verses to be returned
+	 * @param lastVerseNum - final verse in block of verses to be returned
+	 * @return string of all the desired verses, separated by newlines
+	 */
 	public String getVersesFromFirstAndLastVerses(String book, String chapNum, String firstVerseNum, String lastVerseNum){
 		
 		String retVs = "";
@@ -125,6 +164,13 @@ public class Search {
 		
 	}
 	 
+	/**
+	 * Method to return a specific verse
+	 * @param book that the verse appears in
+	 * @param chapNum - chapter/psalm number the verse appears in
+	 * @param verseNum - desired verse
+	 * @return a string of the desired verse
+	 */
 	public String getSpecificVerse(String book, String chapNum, String verseNum){
 		String ref = book + " " + chapNum + ":" + verseNum;
 		return map.get(ref);
