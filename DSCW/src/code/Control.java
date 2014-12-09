@@ -79,97 +79,65 @@ public class Control {
 				
 				boolean run = true;
 				while(run){
-				/*Scanner is instantiated to read input from the command line*/
-				
+					/*Scanner is instantiated to read input from the command line*/
 					
-				Scanner sc = new Scanner(System.in);
-				int input;
-				
-				/*Set of checks made to see which feature the user has selected.*/
-				if(input == 1){
-					System.out.println("\n\n\t" + findNumofTimesFromWord());
-					System.out.println("");
-					run = false;
-				try{
-				input = sc.nextInt();
-				}
-				else if(input == 2){
-					System.out.println("\n\n\t" + findVersesFromWord());
-					System.out.println("");
-					run = false;
-				}
-				else if(input == 3){
-					System.out.println("\n\n\t" + getLocationFromWord());
-					System.out.println("");
-					run = false;
-				}
-				else if(input == 4){
-					System.out.println("\n\n\t" + getChapterFromBookAndChapNum());
-					System.out.println("");
-					run = false;
-				}
-				else if(input == 5){
-					System.out.println("\n\n\t" + getVersesFromFirstAndLastVerses());
-					System.out.println("");
-					run = false;
-				}
-				else if(input == 6){
-					System.out.println("\n\n\t" + getSpecificVerse() + "");
-					System.out.println("");
-					run = false;
-				}
-				else{
-					System.out.println("Incorrect option chosen please try again.");
-				catch(Exception e){
-					run = true;
-					input = 7;
-				}
-				
-				String returnString = null;
-				
-				/*Set of checks made to see which feature the user has selected.*/
-					if(input == 1){
-						returnString = findNumofTimesFromWord();
-						System.out.println("");
-						run = false;
+						
+					Scanner sc = new Scanner(System.in);
+					int input;
+					
+					try{
+						input = sc.nextInt();
 					}
-					else if(input == 2){
-						returnString = findVersesFromWord();
-						run = false;
-					}
-					else if(input == 3){
-						returnString = getLocationFromWord();
-						run = false;
-					}
-					else if(input == 4){
-						returnString = getChapterFromBookAndChapNum();
-						run = false;
-					}
-					else if(input == 5){
-						returnString = getVersesFromFirstAndLastVerses();
-						run = false;
-					}
-					else if(input == 6){
-						returnString = getSpecificVerse();
-						run = false;
-					}
-					else{
-						System.out.println("Incorrect option chosen please try again.");
+					catch(Exception e){
 						run = true;
+						input = 7;
 					}
 					
+					String returnString = null;
 					
-					if(input<7){
-						if(returnString.equals("")){
-							System.out.println("Sorry no matches were found, please try again.");
+					/*Set of checks made to see which feature the user has selected.*/
+						if(input == 1){
+							returnString = findNumofTimesFromWord();
+							System.out.println("");
+							run = false;
+						}
+						else if(input == 2){
+							returnString = findVersesFromWord();
+							run = false;
+						}
+						else if(input == 3){
+							returnString = getLocationFromWord();
+							run = false;
+						}
+						else if(input == 4){
+							returnString = getChapterFromBookAndChapNum();
+							run = false;
+						}
+						else if(input == 5){
+							returnString = getVersesFromFirstAndLastVerses();
+							run = false;
+						}
+						else if(input == 6){
+							returnString = getSpecificVerse();
+							run = false;
 						}
 						else{
-						System.out.println("\n\n" + returnString);
-						System.out.println("");
+							System.out.println("Incorrect option chosen please try again.");
+							run = true;
 						}
-					}
-				
-				
+						
+						
+						if(input<7){
+							if(returnString.equals("")){
+								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
+								System.out.println("");
+							}
+							else{
+							System.out.println("\n\n" + returnString);
+							System.out.println("");
+							}
+						}
+				}
 		}
 
 	public String findNumofTimesFromWord(){
