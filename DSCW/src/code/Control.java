@@ -173,12 +173,11 @@ public class Control {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		Search search = new Search(books);
-		ArrayList verseLocArray = search.getLocationsFromWord(input);
-		String verseReturn = verseLocArray.size() + " ";
-		for(int i = 0; i<verseLocArray.size(); i++){
-			 verseReturn = verseReturn + verseLocArray.get(i) + " ";
+		String result = "";
+		for (String verse : search.getLocationsFromWord(input)){
+			result = result + verse +"\n";
 		}
-		return verseReturn;
+		return result;
 	}
 
 	public String getChapterFromBookAndChapNum(){
