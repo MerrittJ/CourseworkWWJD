@@ -13,11 +13,13 @@ public class Control {
 
 	//Global Variables
 	private HashMap<String, String> books;
+	private Boolean exit;
 
 	//Constructor
 	public Control() throws FileNotFoundException{
 		Tokeniser toke = new Tokeniser();
 		books = new HashMap<String, String>();
+		exit = false;
 		
 		Scanner fileDirScan = new Scanner(new File("src/textDocs/fileDir.txt"));
 		fileDirScan.useDelimiter("\n");
@@ -57,7 +59,11 @@ public class Control {
 				run = false;
 			}
 		}
-			System.out.println("\n\n" + "Application Exited.");	
+			exit();	
+	}
+	
+	public void exit(){
+		System.out.println("\n\n" + "Application Exited.");	
 	}
 	
 	public void runGUI(){
@@ -128,7 +134,7 @@ public class Control {
 						
 						
 						if(input<7){
-							if(returnString.equals("")){
+							if(returnString.equals("") || returnString.contains("null")){
 								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
 								System.out.println("");
 							}
