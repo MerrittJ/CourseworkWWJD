@@ -23,7 +23,7 @@ public class Control {
 		
 		for(int i = 0; i < 66; i++){
 			
-			String rawFileName = fileDirScan.next();//.replaceAll("\r", "");
+			String rawFileName = fileDirScan.next().replaceAll("\r", "");
 			String filePathName = "src/textDocs/" + rawFileName + ".txt";
 
 			File file =  new File(filePathName);
@@ -147,15 +147,18 @@ public class Control {
 		return search.findVersesFromWord(input);
 	}
 
-	public ArrayList<String> getLocationFromWord(){
+	public String getLocationFromWord(){
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Please enter the word you would like searched and the locations of that word will appear below in the format as shown above.");
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		Search search = new Search(books);
-
-		return search.getLocationsFromWord(input);
+		String result = "";
+		for (String verse : search.getLocationsFromWord(input)){
+			result = result + verse + "\n";
+		}
+		return result;
 	}
 
 	public String getChapterFromBookAndChapNum(){
