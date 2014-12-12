@@ -67,7 +67,6 @@ public class Search {
 	 * @return a string of all the verses the word appears in
 	 */
 	public String findVersesFromWord(String word){
-//		 returns every verse that a specified word appears in
 		
 		ArrayList<String> verseLocations = getLocationsFromWord(word);
 		String result = "";	
@@ -84,7 +83,7 @@ public class Search {
 	  * @return an ArrayList of each of the locations 
 	  */
 	public ArrayList<String> getLocationsFromWord(String word){
-		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
+		word = word.toLowerCase(); 
 		
 //		TreeMap<String, String> sortableMap = new TreeMap<String, String>();
 //		sortableMap.putAll(map);
@@ -161,7 +160,6 @@ public class Search {
 		}
 		return retVs;
 		
-		
 	}
 	 
 	/**
@@ -176,11 +174,16 @@ public class Search {
 		return map.get(ref);
 	}
 	
+	/**
+	 * Main method used for testing this class
+	 * @param args
+	 * @throws FileNotFoundException
+	 */
 	public static void main(String args[]) throws FileNotFoundException {
 		Tokeniser toke= new Tokeniser();
 		File file = new File("src/textDocs/Genesis.txt");
 		
-		Search search = new Search(toke.loadToo(file, "Genesis"));
+		Search search = new Search(toke.loadBook(file, "Genesis"));
 		
 		System.out.println(search.getSpecificVerse("Genesis", "2", "13"));
 		System.out.println(search.findVersesFromWord("day"));

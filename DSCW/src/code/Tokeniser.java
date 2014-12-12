@@ -4,18 +4,33 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
-
+/**
+ * Class responsible for tokenising a book into verses and storing them in a HashMap to be searched through by Search
+ * @author Josh Merritt, Tom Connolly
+ *
+ */
 public class Tokeniser extends ClassLoader{
 
-
+	/**
+	 * HashMap to store the book being read by this instance
+	 */
 	private HashMap<String, String> map;
 
-	
+	/**
+	 * Constructor initialising HashMap
+	 */
 	public Tokeniser(){
 		map = new HashMap<String, String>();
 	}
 	
-	public HashMap<String, String> loadToo(File file, String bookName) throws FileNotFoundException {
+	/**
+	 * Primary method to load a book into the HashMap
+	 * @param file of the Bible to be loaded, e.g. Genesis.txt
+	 * @param bookName - name of the book being loaded
+	 * @return Entire HashMap of the book loaded
+	 * @throws FileNotFoundException
+	 */
+	public HashMap<String, String> loadBook(File file, String bookName) throws FileNotFoundException {
 		Scanner chapSc = new Scanner(file);
 		String currentChap;
 		
@@ -28,7 +43,6 @@ public class Tokeniser extends ClassLoader{
 		}
 		
 		currentChap = chapSc.next();
-		//System.out.println(currentChap);
 		
 		//Number of chapter being loaded. used for making Key reference
 		int chapNum = 1;
@@ -40,13 +54,13 @@ public class Tokeniser extends ClassLoader{
 			verseSc.useDelimiter("\n");
 			
 			
-			//if Statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
+			//If statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
 			if (bookName.equals("Psalms") && chapNum > 2) {
 				verseSc.next();
 			}
 			//Number of verse being loaded. used for making Key reference
 			int verseNum = 1;
-			//concatenation to build hashmap key
+			//Concatenation to build HashMap key
 			String verseRef = bookName +" "+ chapNum +":"+ verseNum;
 			
 			while (verseSc.hasNext()) {
@@ -63,9 +77,6 @@ public class Tokeniser extends ClassLoader{
 				
 				verseRef = bookName +" "+ chapNum +":"+ verseNum;
 				
-				/*System.out.println(verseRef);
-				System.out.println(scanned);*/
-				
 				verseNum++;
 				
 			}
@@ -77,11 +88,15 @@ public class Tokeniser extends ClassLoader{
 		chapSc.close();
 		return map;
 	}
-		
+		/**
+		 * Main method used for testing this class
+		 * @param args
+		 * @throws FileNotFoundException
+		 */
 	public static void main(String args[]) throws FileNotFoundException{
 		Tokeniser toke= new Tokeniser();
 		File file = new File("src/textDocs/Psalms.txt");
-		HashMap<String, String> map2 = toke.loadToo(file, "Psalms");
+		HashMap<String, String> map2 = toke.loadBook(file, "Psalms");
 		@SuppressWarnings("unused")
 		String[] new1 = {"we", "car"};
 	}
