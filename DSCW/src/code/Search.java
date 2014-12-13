@@ -40,17 +40,20 @@ public class Search {
 	 * @return the number of times it appears
 	 */
 	public int findNumOfTimesFromWord(String word){
-		// returns the number of times a word appears in the whole Bible
-		
-		word = word.toLowerCase(); // this is input cleaning, should this be here? Yes because it shows parameter word and scanned word are both lowercase. No because cleaning should go in Control (?)
+		// standardise input
+		word = word.toLowerCase();
 		int wordCount = 0;
+		// iterate through the HashMap values
 		for (String verse : map.values()) {
+			// standardise the verses by removing punctuation and carriage returns and making them lowercase
 			String cleanVerse = verse.replaceAll("[^a-zA-Z\\s]", "");
 			cleanVerse = cleanVerse.replaceAll("\r", "");
 			cleanVerse = cleanVerse.toLowerCase();
 			Scanner verseSc = new Scanner(cleanVerse);
 			verseSc.useDelimiter(" ");
+			// scan the verse and check if it matches the input word
 			while (verseSc.hasNext()) {
+				// if so, increment the count
 				if (verseSc.next().equals(word)) {
 					wordCount++;
 				}
@@ -67,10 +70,10 @@ public class Search {
 	 * @return a string of all the verses the word appears in
 	 */
 	public String findVersesFromWord(String word){
-		
+		// use the method getLocationsFromWord to do all of the searching
 		ArrayList<String> verseLocations = getLocationsFromWord(word);
 		String result = "";	
-		
+		// using the verse locations keys, add each verse values to the returning String
 		for (String ver : verseLocations){
 			result = result + map.get(ver) + "\n";
 		}
@@ -83,16 +86,19 @@ public class Search {
 	  * @return an ArrayList of each of the locations 
 	  */
 	public ArrayList<String> getLocationsFromWord(String word){
+		// TODO: Josh doesn't understand how this method works. Theo advise?
+		// standardise input
 		word = word.toLowerCase(); 
 		
 //		TreeMap<String, String> sortableMap = new TreeMap<String, String>();
 //		sortableMap.putAll(map);
 		
-		
+		// send 
 		Set<Entry<String, String>> keySet = map.entrySet();
-		ArrayList<String> verseLocArray = new ArrayList<String>();
+		ArrayList<String> verseLocations = new ArrayList<String>();
 		
 		for (String verse : map.values()) {
+			// standardise the verses by removing punctuation and carriage returns and making them lowercase
 			String cleanVerse = verse.replaceAll("[^a-zA-Z\\s]", "");
 			cleanVerse = cleanVerse.replaceAll("\r", "");
 			cleanVerse = cleanVerse.toLowerCase();
@@ -102,10 +108,10 @@ public class Search {
 			while (verseSc.hasNext()) {
 				if (verseSc.next().equals(word)) {
 				for(Map.Entry<String, String> e: keySet){
-						String verseLoc = e.getKey();
+						String verseLocation = e.getKey();
 						String verseContents = e.getValue();
 						if(verseContents.equals(verse)){
-							verseLocArray.add(verseLoc);
+							verseLocations.add(verseLocation);
 						}
 					}
 				break;
@@ -114,8 +120,8 @@ public class Search {
 			verseSc.close();
 			}
 		
-		Collections.sort(verseLocArray);
-		return verseLocArray;
+		//Collections.sort(verseLocations);
+		return verseLocations;
 	}
 	 
 	/**
@@ -128,9 +134,11 @@ public class Search {
 		
 		String retChap = "";
 		int i = 1;
-		while (i < 99) { // 99 needs to be changed to an actual number???
+		// iterate through the verses in the desired chapter and add them to the returning String
+		while (i < 99) { 
 				String getV = map.get(book+" "+chapNum+":"+i);
 				if (getV == null) {
+					// if the number of verses in the chapter is less than 99 (certain), break the loop to prevent returning more null values
 					break;
 				}
 				else {
@@ -154,6 +162,7 @@ public class Search {
 		String retVs = "";
 		int i = Integer.parseInt(firstVerseNum);
 		int lastV = Integer.parseInt(lastVerseNum);
+		// iterate through the verses between first and last verse and add to the returning String
 		while (i <= lastV) {
 			retVs = retVs + map.get(book+" "+chapNum+":"+i) + "\n";
 			i++;

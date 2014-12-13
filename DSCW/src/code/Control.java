@@ -96,7 +96,7 @@ public class Control {
 	public void runGUI(){
 		
 			
-				/*Set of print statements to print to the console the instructions for use of this program*/
+				// set of print statements to print to the console the instructions for use of this program
 				System.out.println("");
 				System.out.println("This Program provides several different methods to search the text from King James' Bible.");
 				System.out.println("Please select the search method you require, type it's corresponding number in and hit enter.");
@@ -112,7 +112,7 @@ public class Control {
 				
 				boolean run = true;
 				while(run){
-					/*Scanner is instantiated to read input from the command line*/
+					// scanner is instantiated to read input from the command line
 					
 						
 					Scanner sc = new Scanner(System.in);
@@ -122,13 +122,14 @@ public class Control {
 						input = sc.nextInt();
 					}
 					catch(Exception e){
+						// TODO is this statement needed?
 						run = true;
 						input = 7;
 					}
 					
 					String returnString = null;
 					
-					/*Set of checks made to see which feature the user has selected.*/
+					// set of checks made to see which option the user has selected.
 						if(input == 1){
 							returnString = findNumofTimesFromWord();
 							System.out.println("");
@@ -161,11 +162,13 @@ public class Control {
 						
 						
 						if(input<7){
+							// TODO are these two conditions not the same?
 							if(returnString.equals("") || returnString.contains("null")){
 								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
 								System.out.println("");
 							}
 							else{
+								// TODO what does this else statement do?
 							System.out.println("\n\n" + returnString);
 							System.out.println("");
 							}

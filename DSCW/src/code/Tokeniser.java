@@ -34,6 +34,7 @@ public class Tokeniser extends ClassLoader{
 		Scanner chapSc = new Scanner(file);
 		String currentChap;
 		
+		// use different delimiters depending on if book is Psalms or not
 		if (bookName.equals("Psalms")) {
 			chapSc.useDelimiter("PSALM");
 			chapSc.next();
@@ -49,22 +50,24 @@ public class Tokeniser extends ClassLoader{
 		
 		
 		while(chapSc.hasNext()){
-			currentChap = chapSc.next(); // skip 'Book of xxx' section of text on first run
+			// skip 'Book of xxx' section of text on first run
+			currentChap = chapSc.next(); 
 			Scanner verseSc = new Scanner(currentChap);
 			verseSc.useDelimiter("\n");
 			
 			
-			//If statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
+			// TODO if statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
 			if (bookName.equals("Psalms") && chapNum > 2) {
 				verseSc.next();
 			}
-			//Number of verse being loaded. used for making Key reference
+			// number of verse being loaded. used for making Key reference
 			int verseNum = 1;
-			//Concatenation to build HashMap key
+			// concatenation to build HashMap key in the form [book chapter:verse]
 			String verseRef = bookName +" "+ chapNum +":"+ verseNum;
 			
 			while (verseSc.hasNext()) {
 				
+				// TODO add the description some Psalms have as verse 0. Sylvia doesn't want this?
 				String scanned = verseSc.next();
 				if(bookName.equals("Psalms")){
 					Scanner wordSc = new Scanner(scanned);
@@ -75,6 +78,7 @@ public class Tokeniser extends ClassLoader{
 				
 				map.put(verseRef, scanned);
 				
+				// update the key creator when verse is finished(TODO I don't think this line is required at all)
 				verseRef = bookName +" "+ chapNum +":"+ verseNum;
 				
 				verseNum++;
@@ -82,6 +86,7 @@ public class Tokeniser extends ClassLoader{
 			}
 			verseSc.close();
 			chapNum++;
+			// update key creator when chapter is finished
 			verseRef = bookName +" "+ chapNum +":"+ verseNum;
 		}
 		
