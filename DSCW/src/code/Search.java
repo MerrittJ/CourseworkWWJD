@@ -90,12 +90,10 @@ public class Search {
 		// standardise input
 		word = word.toLowerCase(); 
 		
-//		TreeMap<String, String> sortableMap = new TreeMap<String, String>();
-//		sortableMap.putAll(map);
-		
 		// Create a Set that can store both the Key and the Value stored in the Map
 		Set<Entry<String, String>> keySet = map.entrySet();
-		ArrayList<String> verseLocations = new ArrayList<String>();
+		//An ArrayList to store the verse locations. 45,000 was chosen for capacity as it's roughly 1.5 times the number of verse in the Bible.
+		ArrayList<String> verseLocations = new ArrayList<String>(45000);
 		
 		for (String verse : map.values()) {
 			// standardise the verses by removing punctuation and carriage returns and making them lowercase
