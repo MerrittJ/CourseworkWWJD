@@ -86,14 +86,14 @@ public class Search {
 	  * @return an ArrayList of each of the locations 
 	  */
 	public ArrayList<String> getLocationsFromWord(String word){
-		// TODO: Josh doesn't understand how this method works. Theo advise?
+		
 		// standardise input
 		word = word.toLowerCase(); 
 		
 //		TreeMap<String, String> sortableMap = new TreeMap<String, String>();
 //		sortableMap.putAll(map);
 		
-		// send 
+		// Create a Set that can store both the Key and the Value stored in the Map
 		Set<Entry<String, String>> keySet = map.entrySet();
 		ArrayList<String> verseLocations = new ArrayList<String>();
 		
@@ -105,12 +105,18 @@ public class Search {
 			Scanner verseSc = new Scanner(cleanVerse);
 			verseSc.useDelimiter(" ");
 			
+			//Go through the text, scanning each word and if the word matches up with the searched word, search through 
+			//the set that contains all the verses, then when the matching verse is found, return its Key and place it 
+			//the array verseLocations
 			while (verseSc.hasNext()) {
-				if (verseSc.next().equals(word)) {
-				for(Map.Entry<String, String> e: keySet){
+				if (verseSc.next().equals(word)) 
+				{
+					for(Map.Entry<String, String> e: keySet)
+					{
 						String verseLocation = e.getKey();
 						String verseContents = e.getValue();
-						if(verseContents.equals(verse)){
+						if(verseContents.equals(verse))
+						{
 							verseLocations.add(verseLocation);
 						}
 					}
@@ -118,9 +124,7 @@ public class Search {
 				}
 			}
 			verseSc.close();
-			}
-		
-		//Collections.sort(verseLocations);
+		}
 		return verseLocations;
 	}
 	 

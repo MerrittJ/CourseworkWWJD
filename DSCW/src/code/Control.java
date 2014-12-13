@@ -162,7 +162,6 @@ public class Control {
 						
 						
 						if(input<7){
-							// TODO are these two conditions not the same?
 							if(returnString.equals("") || returnString.contains("null")){
 								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
 								System.out.println("");
@@ -340,7 +339,7 @@ public class Control {
 			verse = search.getSpecificVerse(input1, input2, input3);
 			
 			if (verse == null){
-				System.out.println("\n\n" + "The Verse you attempted to select does not exist, please try again.");
+				System.out.println("\n\n" + "The verse you attempted to select does not exist, please try again.");
 				run = true;
 			}
 			else{
