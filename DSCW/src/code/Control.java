@@ -120,6 +120,9 @@ public class Control {
 					
 					try{
 						input = sc.nextInt();
+						if(input<1){
+							input = 7;
+						}
 					}
 					catch(Exception e){
 						// TODO is this statement needed?
