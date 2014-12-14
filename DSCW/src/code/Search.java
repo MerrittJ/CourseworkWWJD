@@ -123,6 +123,7 @@ public class Search {
 			}
 			verseSc.close();
 		}
+		Collections.sort(verseLocations, new LocationsComparator());
 		return verseLocations;
 	}
 	 
