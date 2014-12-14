@@ -19,6 +19,7 @@ public class Control {
 	 * HashMap containing the entire Bible
 	 */
 	private HashMap<String, String> books;
+	private int incorrectOptionValue = 7;
 	// TODO
 	/**
 	 * Unused boolean?
@@ -121,13 +122,13 @@ public class Control {
 					try{
 						input = sc.nextInt();
 						if(input<1){
-							input = 7;
+							input = incorrectOptionValue;
 						}
 					}
 					catch(Exception e){
 						// TODO is this statement needed?
 						run = true;
-						input = 7;
+						input = incorrectOptionValue;
 					}
 					
 					String returnString = null;
@@ -164,7 +165,7 @@ public class Control {
 						}
 						
 						
-						if(input<7){
+						if(input<incorrectOptionValue){
 							if(returnString.equals("") || returnString.contains("null")){
 								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
 								System.out.println("");
