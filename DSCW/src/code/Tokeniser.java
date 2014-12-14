@@ -56,23 +56,29 @@ public class Tokeniser extends ClassLoader{
 			Scanner verseSc = new Scanner(currentChap);
 			verseSc.useDelimiter("\n");
 
-			verseSc.next();
-			/*Scanner checkSc = new Scanner(verseSc.next());
-			String check = checkSc.next();
-			// TODO if statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
-			if (bookName.equals("Psalms") && !Character.isDigit(check.charAt(0))) {
-				verseSc.next();
-			}
-			checkSc.close();*/
+			
+			
 			// number of verse being loaded. used for making Key reference
 			int verseNum = 1;
 			// concatenation to build HashMap key in the form [book chapter:verse]
 			String verseRef = bookName +" "+ chapNum +":"+ verseNum;
 			
+			if(verseSc.hasNext()){
+				verseSc.next();
+			}
 			while (verseSc.hasNext()) {
+				String currentVerse = verseSc.next();
+					Scanner checkSc = new Scanner(currentVerse);
+					if(checkSc.hasNext()){
+						String check = checkSc.next();
+						if (!Character.isDigit(check.charAt(0)) && verseSc.hasNext()) {
+							currentVerse = verseSc.next();
+						}
+				
+				}
 				
 				// TODO add the description some Psalms have as verse 0. Sylvia doesn't want this?
-				String scanned = verseSc.next();
+				String scanned = currentVerse;
 				if(bookName.equals("Psalms")){
 					Scanner wordSc = new Scanner(scanned);
 					if(!wordSc.hasNextInt()){
@@ -80,11 +86,11 @@ public class Tokeniser extends ClassLoader{
 					}
 				}
 				
+				// update the key creator
+				verseRef = bookName +" "+ chapNum +":"+ verseNum;
 				map.put(verseRef, scanned);
 				
-				// update the key creator when verse is finished(TODO I don't think this line is required at all)
-				verseRef = bookName +" "+ chapNum +":"+ verseNum;
-				
+				// update the key creator when verse is finished
 				verseNum++;
 				
 			}
