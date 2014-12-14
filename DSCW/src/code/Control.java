@@ -110,6 +110,8 @@ public class Control {
 				System.out.println("5. Find multiple verses when given a start verse and an end verse.");
 				System.out.println("6. Find a verse from a given book name, chapter number and verse number.");
 				System.out.println("");
+				System.out.println("Please select '0' for Help on formatting your inputs.");
+				System.out.println("");
 				
 				boolean run = true;
 				while(run){
@@ -121,7 +123,7 @@ public class Control {
 					
 					try{
 						input = sc.nextInt();
-						if(input<1){
+						if(input<0){
 							input = incorrectOptionValue;
 						}
 					}
@@ -134,7 +136,19 @@ public class Control {
 					String returnString = null;
 					
 					// set of checks made to see which option the user has selected.
-						if(input == 1){
+						if(input == 0){
+							returnString = " ";
+							System.out.println("\nHelp:");
+							System.out.println("");
+							System.out.println("-Enter the book name you are searching for in upper or lower case characters.");
+							System.out.println("");
+							System.out.println("-If the book name is one of a set ie Samuel or Chronicles enter the number as \n '1chronicles' or '2Samuel'.");
+							System.out.println("");
+							System.out.println("");
+							System.out.println("Please now select an option from the main menu.");
+						
+						}
+						else if(input == 1){
 							returnString = findNumofTimesFromWord();
 							System.out.println("");
 							run = false;
@@ -171,8 +185,8 @@ public class Control {
 								System.out.println("");
 							}
 							else{
-								// TODO what does this else statement do?
-							System.out.println("\n\n" + returnString);
+								//prints the string returned from the search methods
+							System.out.println("\n" + returnString);
 							System.out.println("");
 							}
 						}
