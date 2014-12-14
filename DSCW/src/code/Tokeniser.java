@@ -110,5 +110,9 @@ public class Tokeniser extends ClassLoader{
 		@SuppressWarnings("unused")
 		String[] new1 = {"we", "car"};
 	}
+
+		public static void main(String[] args) {
+			verseSc.next();
+		}
 	
 }
