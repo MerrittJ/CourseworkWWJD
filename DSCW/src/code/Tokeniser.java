@@ -57,14 +57,13 @@ public class Tokeniser extends ClassLoader{
 			verseSc.useDelimiter("\n");
 
 			verseSc.next();
-			String currentVerse = verseSc.next();
-			Scanner checkSc = new Scanner(currentVerse);
-					
+			/*Scanner checkSc = new Scanner(verseSc.next());
+			String check = checkSc.next();
 			// TODO if statement fixes loading problem apart from for Psalm 10, 95 and 96 more code is needed.
-			if (bookName.equals("Psalms") && !Character.isDigit(checkSc.next().charAt(0))) {
+			if (bookName.equals("Psalms") && !Character.isDigit(check.charAt(0))) {
 				verseSc.next();
 			}
-			checkSc.close();
+			checkSc.close();*/
 			// number of verse being loaded. used for making Key reference
 			int verseNum = 1;
 			// concatenation to build HashMap key in the form [book chapter:verse]
@@ -73,7 +72,7 @@ public class Tokeniser extends ClassLoader{
 			while (verseSc.hasNext()) {
 				
 				// TODO add the description some Psalms have as verse 0. Sylvia doesn't want this?
-				String scanned = currentVerse;
+				String scanned = verseSc.next();
 				if(bookName.equals("Psalms")){
 					Scanner wordSc = new Scanner(scanned);
 					if(!wordSc.hasNextInt()){
