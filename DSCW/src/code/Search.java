@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -14,7 +12,6 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.regex.Pattern;
 
 /**
  * Class responsible for searching through HashMaps to find word counts, word locations, and verses
@@ -22,7 +19,7 @@ import java.util.regex.Pattern;
  * @author Josh Merritt, Theo Matthews
  *
  */
-public class Search implements Comparator{
+public class Search {
 	
 	/**
 	 * HashMap variable to hold a single book
@@ -126,7 +123,6 @@ public class Search implements Comparator{
 			}
 			verseSc.close();
 		}
-		Collections.sort(verseLocations, new LocationComparator());
 		return verseLocations;
 	}
 	 
@@ -189,46 +185,6 @@ public class Search implements Comparator{
 		return map.get(ref);
 	}
 	
-	public void orderVerses(ArrayList<String> verses) {
-		
-	}
-	
-	public int compare(Object v1, Object v2) {
-		
-		Scanner sc1 = new Scanner((String)v1);
-		sc1.useDelimiter(Pattern.compile("\\s|:"));
-		Scanner sc2 = new Scanner((String)v2);
-		sc2.useDelimiter(Pattern.compile("\\s|:"));
-		
-		if (sc1.next().compareTo(sc2.next()) > 0) {
-			return -1;
-		}
-		else if (sc1.next().compareTo(sc2.next()) < 0) {
-			return 1;
-		}
-		else {
-			if (sc1.nextInt() < sc2.nextInt()) {
-				return 1;
-			}
-			else if (sc1.nextInt() > sc2.nextInt()) {
-				return -1;
-			}
-			else {
-				if (sc1.nextInt() < sc2.nextInt()) {
-					return 1;
-				}
-				else if (sc1.nextInt() > sc2.nextInt()) {
-					return -1;
-				}
-			}
-		}
-		
-		
-		return 0;
-		
-		
-	}
-	
 	/**
 	 * Main method used for testing this class
 	 * @param args
@@ -241,12 +197,7 @@ public class Search implements Comparator{
 		Search search = new Search(toke.loadBook(file, "Genesis"));
 		
 		System.out.println(search.getSpecificVerse("Genesis", "2", "13"));
-		//System.out.println(search.findVersesFromWord("day"));
-		long startTime = (new Date()).getTime();
-		System.out.println(search.getLocationsFromWord("day"));
-		long endTime = (new Date()).getTime();
-		long elapsedTime = endTime - startTime;
-		System.out.println(elapsedTime);
+		System.out.println(search.findVersesFromWord("day"));
 		
 	}
 }
