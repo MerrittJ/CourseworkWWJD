@@ -75,7 +75,7 @@ public class Search {
 		String result = "";	
 		// using the verse locations keys, add each verse values to the returning String
 		for (String ver : verseLocations){
-			result = result + map.get(ver) + "\n";
+			result = result + ver + " - " + map.get(ver) + "\n";
 		}
 		return result;
 	
