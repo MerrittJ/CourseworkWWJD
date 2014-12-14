@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -241,6 +242,11 @@ public class Search implements Comparator{
 		
 		System.out.println(search.getSpecificVerse("Genesis", "2", "13"));
 		//System.out.println(search.findVersesFromWord("day"));
+		long startTime = (new Date()).getTime();
 		System.out.println(search.getLocationsFromWord("day"));
+		long endTime = (new Date()).getTime();
+		long elapsedTime = endTime - startTime;
+		System.out.println(elapsedTime);
+		
 	}
 }
