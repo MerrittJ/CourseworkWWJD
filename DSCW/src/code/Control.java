@@ -71,7 +71,7 @@ public class Control {
 		boolean run = true;
 		
 		while(run == true){
-			runGUI();
+			runTUI();
 			
 			System.out.println("Would you like to return to the main menu? ('yes' or 'no')");
 			Scanner sc = new Scanner(System.in);
@@ -94,7 +94,7 @@ public class Control {
 	/**
 	 * Method to interact with user. Contains menu options and returns search results to user
 	 */
-	public void runGUI(){
+	public void runTUI(){
 		
 			
 				// set of print statements to print to the console the instructions for use of this program
