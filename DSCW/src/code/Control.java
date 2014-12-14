@@ -189,7 +189,7 @@ public class Control {
 		System.out.println("Please enter the word you would like searched and the number of times it appears in the bible will appear below.");
 		
 		Scanner sc = new Scanner(System.in);
-		String input = sc.next();
+		String input = sc.next().toLowerCase();
 		
 		Search search = new Search(books);
 		int wordCount = search.findNumOfTimesFromWord(input);
@@ -207,7 +207,7 @@ public class Control {
 		System.out.println("");
 		System.out.println("Please enter the word you would like searched and the verse that appear in will appear below.");
 		Scanner sc = new Scanner(System.in);
-		String input = sc.next();
+		String input = sc.next().toLowerCase();
 		Search search = new Search(books);
 
 		return search.findVersesFromWord(input);
@@ -222,7 +222,7 @@ public class Control {
 		System.out.println("");
 		System.out.println("Please enter the word you would like searched and the locations of that word will appear below in the format as shown above.");
 		Scanner sc = new Scanner(System.in);
-		String input = sc.next();
+		String input = sc.next().toLowerCase();
 		Search search = new Search(books);
 		String result = "";
 		for (String verse : search.getLocationsFromWord(input)){
@@ -240,7 +240,7 @@ public class Control {
 		System.out.println("");
 		System.out.println("Please enter the book that the chapter you are searching for appears in.");
 		Scanner sc = new Scanner(System.in);
-		String input1 = sc.next();
+		String input1 = sc.next().toLowerCase();
 		String input2 = "";
 		
 		if(input1.equals("Psalms")){
@@ -268,7 +268,7 @@ public class Control {
 		System.out.println("");
 		System.out.println("Please enter the book that the chapter you are searching for appears in.");
 		Scanner sc = new Scanner(System.in);
-		String input1 = sc.next();
+		String input1 = sc.next().toLowerCase();
 		String input2 = "";
 		Search search = new Search(books);
 		
@@ -320,7 +320,7 @@ public class Control {
 			System.out.println("");
 			System.out.println("Please enter the book that the chapter you are searching for appears in.");
 			Scanner sc = new Scanner(System.in);
-			String input1 = sc.next();
+			String input1 = sc.next().toLowerCase();
 			String input2 = "";
 			
 			if(input1.equals("Psalms")){
