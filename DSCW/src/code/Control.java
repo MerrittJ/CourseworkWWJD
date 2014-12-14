@@ -19,6 +19,7 @@ public class Control {
 	 * HashMap containing the entire Bible
 	 */
 	private HashMap<String, String> books;
+	private int incorrectOptionValue = 7;
 	// TODO
 	/**
 	 * Unused boolean?
@@ -70,7 +71,7 @@ public class Control {
 		boolean run = true;
 		
 		while(run == true){
-			runGUI();
+			runTUI();
 			
 			System.out.println("Would you like to return to the main menu? ('yes' or 'no')");
 			Scanner sc = new Scanner(System.in);
@@ -93,7 +94,7 @@ public class Control {
 	/**
 	 * Method to interact with user. Contains menu options and returns search results to user
 	 */
-	public void runGUI(){
+	public void runTUI(){
 		
 			
 				// set of print statements to print to the console the instructions for use of this program
@@ -121,13 +122,13 @@ public class Control {
 					try{
 						input = sc.nextInt();
 						if(input<1){
-							input = 7;
+							input = incorrectOptionValue;
 						}
 					}
 					catch(Exception e){
 						// TODO is this statement needed?
 						run = true;
-						input = 7;
+						input = incorrectOptionValue;
 					}
 					
 					String returnString = null;
@@ -164,7 +165,7 @@ public class Control {
 						}
 						
 						
-						if(input<7){
+						if(input<incorrectOptionValue){
 							if(returnString.equals("") || returnString.contains("null")){
 								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
 								System.out.println("");
