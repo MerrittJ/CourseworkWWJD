@@ -73,12 +73,24 @@ public class Control {
 		while(run == true){
 			runTUI();
 			
-			System.out.println("Would you like to return to the main menu? ('yes' or 'no')");
-			Scanner sc = new Scanner(System.in);
-			String endInput = sc.next();
-			
-			if(endInput.equals("no")){
-				run = false;
+			boolean runExit = true;
+			while(runExit == true){
+				
+				System.out.println("Would you like to return to the main menu? ('yes' or 'no')");
+				Scanner sc = new Scanner(System.in);
+				String endInput = sc.next();
+				
+				if(endInput.equals("no")){
+					runExit = false;
+					run = false;
+				}
+				else if(endInput.equals("yes")){
+					runExit = false;
+					run = true;
+				}
+				else{
+					System.out.print("\nInput not recognised please type 'yes or 'no'.\n");
+				}
 			}
 		}
 			exit();	
@@ -128,8 +140,6 @@ public class Control {
 						}
 					}
 					catch(Exception e){
-						// TODO is this statement needed?
-						run = true;
 						input = incorrectOptionValue;
 					}
 					
