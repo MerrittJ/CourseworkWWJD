@@ -213,11 +213,12 @@ public class Control {
 		System.out.println("Please enter the word you would like searched and the number of times it appears in the bible will appear below.");
 		
 		Scanner sc = new Scanner(System.in);
-		String input = sc.next().toLowerCase();
+		String input = sc.next();
+		String cleanInput = input.toLowerCase();
 		
 		Search search = new Search(books);
-		int wordCount = search.findNumOfTimesFromWord(input);
-		String wordCountString = "The word " + input + " appeared " + wordCount + " times."; 
+		int wordCount = search.findNumOfTimesFromWord(cleanInput);
+		String wordCountString = "The word '" + input + "' appeared " + wordCount + " times."; 
 		return wordCountString;
 		
 	}
