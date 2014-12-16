@@ -150,7 +150,7 @@ public class Control {
 						
 						}
 						else if(input == 1){
-							returnString = findNumofTimesFromWord();
+							returnString = findNumOfTimesFromWord();
 							System.out.println("");
 							run = false;
 						}
@@ -199,7 +199,7 @@ public class Control {
 	 * @return a String informing the user of the input word and output number of occurrences
 	 */
 	@SuppressWarnings("resource")
-	public String findNumofTimesFromWord(){
+	public String findNumOfTimesFromWord(){
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Please enter the word you would like searched and the number of times it appears in the bible will appear below.");

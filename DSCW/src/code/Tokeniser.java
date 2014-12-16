@@ -101,11 +101,4 @@ public class Tokeniser extends ClassLoader{
 		return map;
 	}
 	
-	public static void main(String args[]) throws FileNotFoundException{
-		Tokeniser toke = new Tokeniser();
-		File file = new File("src/textDocs/Psalms2.txt");
-		toke.loadBook(file,"psalms");
-		@SuppressWarnings({ "rawtypes", "unused" })
-		ArrayList boo = new ArrayList();
-	}
 }
