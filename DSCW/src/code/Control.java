@@ -3,9 +3,7 @@ package code;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,20 +18,15 @@ public class Control {
 	 */
 	private HashMap<String, String> books;
 	private int incorrectOptionValue = 7;
-	// TODO
-	/**
-	 * Unused boolean?
-	 */
-	private Boolean exit;
 
 	/**
 	 * Constructor initialising variables and compiling all the books of the Bible into a single HashMap
 	 * @throws FileNotFoundException
 	 */
+	@SuppressWarnings("resource")
 	public Control() throws FileNotFoundException{
 		Tokeniser toke = new Tokeniser();
 		books = new HashMap<String, String>();
-		exit = false;
 		
 		Scanner fileDirScan = new Scanner(new File("src/textDocs/fileDir.txt"));
 		fileDirScan.useDelimiter("\n");
@@ -46,10 +39,6 @@ public class Control {
 			File file =  new File(filePathName);
 			
 			books.putAll(toke.loadBook(file, rawFileName));
-			
-			/*
-			System.out.println(filePathName);
-			System.out.println(rawFileName);*/
 		}
 	}
 
@@ -66,6 +55,7 @@ public class Control {
 	/**
 	 * Primary method to run TUI
 	 */
+	@SuppressWarnings("resource")
 	public void runProgram(){
 		
 		boolean run = true;
@@ -106,6 +96,7 @@ public class Control {
 	/**
 	 * Method to interact with user. Contains menu options and returns search results to user
 	 */
+	@SuppressWarnings("resource")
 	public void runTUI(){
 		
 			
@@ -207,6 +198,7 @@ public class Control {
 	 * Method to allow user to find the number of times a word appears in the Bible
 	 * @return a String informing the user of the input word and output number of occurrences
 	 */
+	@SuppressWarnings("resource")
 	public String findNumofTimesFromWord(){
 		System.out.println("");
 		System.out.println("");
@@ -227,6 +219,7 @@ public class Control {
 	 * Method to return all complete verses that contain a given word.
 	 * @return a String containing all the verses meeting the requirement
 	 */
+	@SuppressWarnings("resource")
 	public String findVersesFromWord(){
 		System.out.println("");
 		System.out.println("");
@@ -242,6 +235,7 @@ public class Control {
 	 * Method to return all verse locations that contain a given word in the form [book chapter:verse]
 	 * @return a String containing all the locations meeting the requirement
 	 */
+	@SuppressWarnings("resource")
 	public String getLocationFromWord(){
 		System.out.println("");
 		System.out.println("");
@@ -260,6 +254,7 @@ public class Control {
 	 * Method to return a specific chapter/psalm from a Bible book
 	 * @return a String of the complete chapter/psalm
 	 */
+	@SuppressWarnings("resource")
 	public String getChapterFromBookAndChapNum(){
 		System.out.println("");
 		System.out.println("");
@@ -288,6 +283,7 @@ public class Control {
 	 * Method to return all verses between two points (verses)
 	 * @return a String of all the verses meeting the requirement
 	 */
+	@SuppressWarnings("resource")
 	public String getVersesFromFirstAndLastVerses(){
 		System.out.println("");
 		System.out.println("");
@@ -335,6 +331,7 @@ public class Control {
 	 * Method to return a specific verse from the Bible
 	 * @return a String of the specific verse
 	 */
+	@SuppressWarnings("resource")
 	public String getSpecificVerse(){
 		
 		boolean run = true;

@@ -1,17 +1,12 @@
 package code;
 
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
 
 /**
  * Class responsible for searching through HashMaps to find word counts, word locations, and verses
@@ -184,21 +179,5 @@ public class Search {
 	public String getSpecificVerse(String book, String chapNum, String verseNum){
 		String ref = book + " " + chapNum + ":" + verseNum;
 		return map.get(ref);
-	}
-	
-	/**
-	 * Main method used for testing this class
-	 * @param args
-	 * @throws FileNotFoundException
-	 */
-	public static void main(String args[]) throws FileNotFoundException {
-		Tokeniser toke= new Tokeniser();
-		File file = new File("src/textDocs/Genesis.txt");
-		
-		Search search = new Search(toke.loadBook(file, "Genesis"));
-		
-		System.out.println(search.getSpecificVerse("Genesis", "2", "13"));
-		System.out.println(search.findVersesFromWord("day"));
-		
 	}
 }

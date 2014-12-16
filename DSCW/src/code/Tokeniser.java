@@ -2,7 +2,6 @@ package code;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -31,6 +30,7 @@ public class Tokeniser extends ClassLoader{
 	 * @return Entire HashMap of the book loaded
 	 * @throws FileNotFoundException
 	 */
+	@SuppressWarnings("resource")
 	public HashMap<String, String> loadBook(File file, String bookName) throws FileNotFoundException {
 		Scanner chapSc = new Scanner(file);
 		String currentChap;
@@ -103,17 +103,4 @@ public class Tokeniser extends ClassLoader{
 		chapSc.close();
 		return map;
 	}
-		/**
-		 * Main method used for testing this class
-		 * @param args
-		 * @throws FileNotFoundException
-		 */
-	public static void main(String args[]) throws FileNotFoundException{
-		Tokeniser toke= new Tokeniser();
-		File file = new File("src/textDocs/Psalms.txt");
-		HashMap<String, String> map2 = toke.loadBook(file, "Psalms");
-		@SuppressWarnings("unused")
-		String[] new1 = {"we", "car"};
-	}
-	
 }
