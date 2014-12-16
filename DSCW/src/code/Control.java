@@ -28,7 +28,7 @@ public class Control {
 		//build tokeniser
 		Tokeniser toke = new Tokeniser();
 		//build large HashMap of capacity 45,000. (this is 1.5x the number of verses in the bible.)
-		books = new HashMap<String, String>();
+		books = new HashMap<String, String>(45000);
 		
 		//build scanner to read the file directory of books.
 		Scanner fileDirScan = new Scanner(new File("src/textDocs/fileDir.txt"));
