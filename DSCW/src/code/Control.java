@@ -25,19 +25,26 @@ public class Control {
 	 */
 	@SuppressWarnings("resource")
 	public Control() throws FileNotFoundException{
+		//build tokeniser
 		Tokeniser toke = new Tokeniser();
+		//build large HashMap of capacity 45,000. (this is 1.5x the number of verses in the bible.)
 		books = new HashMap<String, String>();
 		
+		//build scanner to read the file directory of books.
 		Scanner fileDirScan = new Scanner(new File("src/textDocs/fileDir.txt"));
+		//use new line delimiter
 		fileDirScan.useDelimiter("\n");
 		
 		for(int i = 0; i < 66; i++){
 			
+			//build the path name for each book using each value in fileDir
 			String rawFileName = fileDirScan.next().replaceAll("\r", "");
 			String filePathName = "src/textDocs/" + rawFileName + ".txt";
-
+			
+			//create file for use in tokeniser
 			File file =  new File(filePathName);
 			
+			//take the returned HashMap and add it to the mother HashMap.
 			books.putAll(toke.loadBook(file, rawFileName));
 		}
 	}
@@ -64,6 +71,7 @@ public class Control {
 			runTUI();
 			
 			boolean runExit = true;
+			//clause to offer exit program option
 			while(runExit == true){
 				
 				System.out.println("Would you like to return to the main menu? ('yes' or 'no')");
@@ -149,6 +157,7 @@ public class Control {
 							System.out.println("Please now select an option from the main menu.");
 						
 						}
+						//chek input and perform necessary methods
 						else if(input == 1){
 							returnString = findNumOfTimesFromWord();
 							System.out.println("");
@@ -179,7 +188,7 @@ public class Control {
 							run = true;
 						}
 						
-						
+						//If the input returned from the search object is empty or null, an appropriate error message is given and the user can try again
 						if(input<incorrectOptionValue){
 							if(returnString.equals("") || returnString.contains("null")){
 								System.out.println("\n\n" + "Sorry no matches were found, please try again.");
