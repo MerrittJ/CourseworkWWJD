@@ -345,7 +345,7 @@ public class Control {
 			String input1 = sc.next().toLowerCase();
 			String input2 = "";
 			
-			if(input1.equals("Psalms")){
+			if(input1.equals("psalms")){
 				System.out.println("");
 				System.out.println("Please enter the Psalm number.");
 				input2 = sc.next();

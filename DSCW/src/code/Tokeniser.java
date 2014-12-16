@@ -1,6 +1,7 @@
 package code;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -36,11 +37,11 @@ public class Tokeniser extends ClassLoader{
 		String currentChap;
 		
 		// use different delimiters depending on if book is Psalms or not
-		if (bookName.equals("Psalms")) {
+		if (bookName.equals("psalms")) {
 			chapSc.useDelimiter("PSALM");
 			chapSc.next();
 		}
-		else if (!bookName.equals("Psalms")){
+		else if (!bookName.equals("psalms")){
 		chapSc.useDelimiter("CHAPTER");
 		}
 		
@@ -63,32 +64,28 @@ public class Tokeniser extends ClassLoader{
 			// concatenation to build HashMap key in the form [book chapter:verse]
 			String verseRef = bookName +" "+ chapNum +":"+ verseNum;
 			
+			//clause to move past the chapter/Psalm number
 			if(verseSc.hasNext()){
 				verseSc.next();
 			}
 			while (verseSc.hasNext()) {
+				//instantiate scanner to check the first word in the string for a number
 				String currentVerse = verseSc.next();
-					Scanner checkSc = new Scanner(currentVerse);
+				Scanner checkSc = new Scanner(currentVerse);
 					if(checkSc.hasNext()){
+						//load first word in verse into a variable
 						String check = checkSc.next();
+						//check if word can be interpreted as a digit (even though it is currently held in a string)
 						if (!Character.isDigit(check.charAt(0)) && verseSc.hasNext()) {
+							//if it is not a digit, it must be pre-amble before a Psalm or Chapter and so should be skipped
 							currentVerse = verseSc.next();
 						}
 				
 				}
-				
-				// TODO add the description some Psalms have as verse 0. Sylvia doesn't want this?
-				String scanned = currentVerse;
-				if(bookName.equals("Psalms")){
-					Scanner wordSc = new Scanner(scanned);
-					if(!wordSc.hasNextInt()){
-						verseNum = 0;
-					}
-				}
-				
+								
 				// update the key creator
 				verseRef = bookName +" "+ chapNum +":"+ verseNum;
-				map.put(verseRef, scanned);
+				map.put(verseRef, currentVerse);
 				
 				// update the key creator when verse is finished
 				verseNum++;
@@ -102,5 +99,13 @@ public class Tokeniser extends ClassLoader{
 		
 		chapSc.close();
 		return map;
+	}
+	
+	public static void main(String args[]) throws FileNotFoundException{
+		Tokeniser toke = new Tokeniser();
+		File file = new File("src/textDocs/Psalms2.txt");
+		toke.loadBook(file,"psalms");
+		@SuppressWarnings({ "rawtypes", "unused" })
+		ArrayList boo = new ArrayList();
 	}
 }
