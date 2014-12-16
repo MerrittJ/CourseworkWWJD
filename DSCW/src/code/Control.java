@@ -141,7 +141,7 @@ public class Control {
 							returnString = " ";
 							System.out.println("\nHelp:");
 							System.out.println("");
-							System.out.println("-Enter the book name you are searching for in upper or lower case characters.");
+							System.out.println("-Enter any inputs in upper or lower case characters.");
 							System.out.println("");
 							System.out.println("-If the book name is one of a set ie Samuel or Chronicles enter the number as \n '1chronicles' or '2Samuel'.");
 							System.out.println("");
