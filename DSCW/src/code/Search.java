@@ -35,6 +35,7 @@ public class Search {
 	 * @return the number of times it appears
 	 */
 	public int findNumOfTimesFromWord(String word){
+		long start = System.nanoTime()/100;
 		// standardise input
 		word = word.toLowerCase();
 		int wordCount = 0;
@@ -54,8 +55,10 @@ public class Search {
 				}
 			}
 			verseSc.close();
+			
 		}
-		
+		long end = System.nanoTime();
+		System.out.println((end - start)/1000);
 		return wordCount;
 		 }
 	
